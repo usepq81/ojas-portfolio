@@ -1,22 +1,26 @@
+export type Status = "Incoming" | "Ongoing" | "Completed";
+
 export type Experience = {
   role: string;
   org: string;
   date: string;
   details: string[];
+  status?: Status;
 };
 
 export const EXPERIENCES: Experience[] = [
+  {
+    role: "Robotics Research Intern",
+    org: "GE Vernova Advanced Research Center",
+    date: "May 2026 – Aug 2026",
+    status: "Incoming",
+    details: []
+  },
   // {
   //   role: "Hardware Systems Intern",
   //   org: "Physical Intelligence (π)",
   //   date: "Jan 2026 – Apr 2026",
-  //   details: [ ]
-  // },
-  // {
-  //   role: "Robotics Research Intern",
-  //   org: "GE Vernova Advanced Research Center",
-  //   date: "May 2026 – Aug 2026",
-  //   details: [ ]
+  //   details: []
   // },
   // {
   //   role: "Graduate Research Assistant",
@@ -24,13 +28,13 @@ export const EXPERIENCES: Experience[] = [
   //   date: "Jan 2026 – Present",
   //   details: [
   //     "Conducting research on tactile sensing for humanoid loco-manipulation and RL for collaborative transport and whole-body manipulation",
-  //     "Integrated tactile sensors into a humanoid robot platform, enabling enhanced manipulation capabilities for complex tasks",
+  //     "Integrating tactile sensors in a compliant robotic arm, enabling enhanced manipulation capabilities, with plans for integration into a humanoid robot platform for collaborative tasks",
   //   ]
   // },
   {
     role: "Graduate Research Assistant",
     org: "Contextual Computing Group @ Georgia Tech",
-    date: "Aug 2024 – Present",
+    date: "Aug 2024 – January 2026",
     details: [
       "Built a remotely operated vehicle (ROV) for dolphin research and enrichment, contributing across firmware, electronics, and mechanical design; successfully deployed in 15+ pool trials and 4 open-water trials in the Atlantic",
       "Designed and implemented an ESP32 firmware stack, orchestrating a cascaded PID-based controller, ESC-driven thrusters, internal sensors, over-the-air telemetry, and LED signaling, unifying system operation in the field",

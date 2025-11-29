@@ -13,10 +13,10 @@ export default function Experience() {
 
   const displayedItems = useMemo(() => {
     if (showAll) return items
-    return items.slice(0, 3)
+    return items.slice(0, 4)
   }, [items, showAll])
 
-  const hasMoreItems = items.length > 3
+  const hasMoreItems = items.length > 4
   
   return (
     <Section id="experience" className="py-12 md:py-20">
@@ -25,9 +25,31 @@ export default function Experience() {
         <div className="mt-8 space-y-8">
           {displayedItems.map((exp, i) => (
             <div key={i} className="rounded-xl border border-border bg-panel p-5 hover:border-accent-green transition-all hover:-translate-y-1">
-              <h3 className="text-lg font-medium ">{exp.role}</h3>
-              <p className="text-sm text-accent-green">{exp.org}</p>
-              <p className="text-xs text-subtext">{exp.date}</p>
+              <div className="flex items-center gap-3">
+                <div className="flex-1">
+                  <h3 className="text-lg font-medium ">{exp.role}</h3>
+                  <p className="text-sm text-accent-green">{exp.org}</p>
+                  <p className="text-xs text-subtext">{exp.date}</p>
+                </div>
+
+                {exp.status === "Incoming" && (
+                  <div className="flex-shrink-0">
+                    <span className="inline-flex items-center gap-2 text-sm font-medium text-emerald-400">
+                      <span className="relative inline-flex h-2.5 w-2.5">
+                        <span
+                          className="absolute inset-0 rounded-full bg-emerald-400 opacity-100 shadow-[0_0_12px_3px_rgba(16,185,129,0.9)]"
+                          aria-hidden
+                        />
+                        <span
+                          className="absolute inset-0 rounded-full bg-emerald-400/80 blur-[4px] animate-[pulse_1.5s_ease-in-out_infinite]"
+                          aria-hidden
+                        />
+                      </span>
+                      Incoming
+                    </span>
+                  </div>
+                )}
+              </div>
               
               {exp.details?.length ? (
                 <ul className="mt-3 list-disc list-outside pl-5 text-sm text-subtext space-y-1">
@@ -40,14 +62,14 @@ export default function Experience() {
           ))}
         </div>
 
-        {/* See More Button */}
+        {/* Show More Button */}
         {hasMoreItems && (
           <div className="mt-8 flex justify-center">
             <button
               onClick={() => setShowAll(!showAll)}
               className="group inline-flex items-center gap-2 rounded-2xl border border-border px-6 py-3 text-sm font-medium text-accent-white transition-all hover:border-accent-green hover:text-accent-green hover:shadow-sm"
             >
-              {showAll ? 'Show Less' : 'See More'}
+              {showAll ? 'Show Less' : 'Show More'}
               {showAll ? (
                 <ChevronUp className="size-4 transition-transform duration-200" />
               ) : (

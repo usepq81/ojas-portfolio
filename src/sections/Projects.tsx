@@ -265,14 +265,14 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* See More Button */}
+        {/* Show More Button */}
         {hasMoreItems && (
           <div className="mt-8 flex justify-center">
             <button
               onClick={() => setShowAll(!showAll)}
               className="group inline-flex items-center gap-2 rounded-2xl border border-border px-6 py-3 text-sm font-medium text-accent-white transition-all hover:border-accent-purple hover:text-accent-purple hover:shadow-sm"
             >
-              {showAll ? 'Show Less' : 'See More'}
+              {showAll ? 'Show Less' : 'Show More'}
               {showAll ? (
                 <ChevronUp className="size-4 transition-transform duration-200" />
               ) : (
