@@ -60,7 +60,7 @@ export const PROJECTS: Project[] = [
     blurb: "Exploring robotics principles in ROS2 using the TurtleBot3 platform, including SLAM, navigation, and computer vision.",
     tags: ["Robotics", "AI/ML", "ROS2", "OpenCV", "Gazebo", "SLAM"],
     area: "Robotics",
-    status: "Active",
+    status: "Complete",
     thumb: "media/turtlebot3/turtlebot3_thumb.jpg",
     previewVideo: "media/turtlebot3/turtlebot3_preview.mp4",
     mainVideo: "media/turtlebot3/turtlebot3_preview.mp4",
@@ -71,14 +71,15 @@ export const PROJECTS: Project[] = [
 
     After that, I shifted toward navigation. I built a Go-to-Goal controller that blended odometry and LIDAR sensing for reactive obstacle avoidance. The robot computed velocity commands based on real-time obstacle vectors and could move toward arbitrary goal positions while steering cleanly around whatever got in the way. This part of the project taught me a lot about low-level control, sensor fusion, and how motion planning works under practical constraints.
 
-    The most recent phase focused on full mapping, localization, and global navigation with the ROS 2 Nav2 stack. I used slam_toolbox to generate occupancy maps in both simulation and real environments, set up AMCL for reliable pose estimation, and tuned costmap and controller parameters until the robot could handle narrow hallways without drifting or oscillating. To automate longer missions, I wrote a ROS 2 node that publishes sequential waypoints to the /goal_pose topic so the robot can traverse a full route on its own. I tested everything in Gazebo’s maze world and then transferred it to the physical TurtleBot3, where it performed consistent waypoint navigation and environment-aware planning.
+    The most recent phase focused on full mapping, localization, and global navigation with the ROS 2 Nav2 stack. I set up AMCL for reliable pose estimation, and tuned costmap and controller parameters until the robot could handle narrow hallways without drifting or oscillating. To automate longer missions, I wrote a ROS 2 node that publishes sequential waypoints to the /goal_pose topic so the robot can traverse a full route on its own. I tested everything in Gazebo's maze world and then transferred it to the physical TurtleBot3, where it performed consistent waypoint navigation and environment-aware planning.
 
-    Looking ahead, I want to push this further with particle-filtered localization and mapping and machine learning CV control. The project has become an evolving testbed that helps me understand ROS 2 at every level, from node communication and sensor drivers to high-level autonomy.`,
+    The final project brought everything together in a maze navigation task that required real-time sign classification using computer vision. The robot had to autonomously navigate through a maze while identifying and responding to visual commands posted at intersections. We experimented with several machine learning approaches for image classification, testing different models to balance accuracy with computational constraints. After evaluating options including deep learning architectures (just for fun, these were way too big to run on our limited turtlebot3), we settled on a Support Vector Machine (SVM) classifier. The SVM proved to be lightweight enough to run directly onboard the TurtleBot3 while still delivering excellent classification performance.`,
     gallery: [
       "media/turtlebot3/turtlebot3_1.mp4",
       "media/turtlebot3/turtlebot3_2.mp4",
       "media/turtlebot3/turtlebot3_3.mp4",
-      "media/turtlebot3/turtlebot3_4.mp4",]
+      "media/turtlebot3/turtlebot3_4.mp4",
+      "media/turtlebot3/turtlebot3_5.mp4",]
   },
   {
     slug: "buzzcaster-guitar",
