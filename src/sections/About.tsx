@@ -12,8 +12,8 @@ const STATUS_MESSAGES = [
   "conference papers.",
   "robots.",
   "secret TV things.",
-  "learning ROS2.",
-  "finals.",
+  "christmas presents.",
+  "tactile sensors."
 ];
 
 const resumeHref = `${import.meta.env.BASE_URL}resume.pdf`;

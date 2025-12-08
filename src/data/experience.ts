@@ -22,15 +22,25 @@ export const EXPERIENCES: Experience[] = [
   //   date: "Jan 2026 – Apr 2026",
   //   details: []
   // },
-  // {
-  //   role: "Graduate Research Assistant",
-  //   org: "Laboratory for Intelligent Decision and Autonomous Robotics (LIDAR) @ Georgia Tech",
-  //   date: "Jan 2026 – Present",
-  //   details: [
-  //     "Conducting research on tactile sensing for humanoid loco-manipulation and RL for collaborative transport and whole-body manipulation",
-  //     "Integrating tactile sensors in a compliant robotic arm, enabling enhanced manipulation capabilities, with plans for integration into a humanoid robot platform for collaborative tasks",
-  //   ]
-  // },
+  {
+    role: "Graduate Research Assistant",
+    org: "Laboratory for Intelligent Decision and Autonomous Robots (LIDAR) @ Georgia Tech",
+    date: "Jan 2026 – Present",
+    details: [
+      "Conducting research on tactile sensing for humanoid loco-manipulation and RL for collaborative transport and whole-body manipulation",
+      "Integrating tactile sensors in a compliant robotic arm, enabling enhanced manipulation capabilities, with plans for integration into a humanoid robot platform for collaborative tasks",
+    ]
+  },
+  {
+    role: "Graduate Teaching Assistant",
+    org: "Georgia Institute of Technology",
+    date: "May 2025 – Present",
+    details: [
+      "Served as a teaching assistant for Mobile and Ubiquitous Computing and Prototyping Intelligent Devices; graduate-level, project based courses on embedded systems, firmware development, and edge machine learning",
+      "Guided 8 student teams per semester in developing app prototypes and custom microcontroller-based projects, providing mentorship on report authorship that led to higher project success rates and more polished deliverables.",
+      "Hosted office hours and asynchronous feedback sessions, guiding students through technical and research hurdles"
+    ]
+  },
   {
     role: "Graduate Research Assistant",
     org: "Contextual Computing Group @ Georgia Tech",
@@ -42,16 +52,6 @@ export const EXPERIENCES: Experience[] = [
       "Designed mechanical components in Fusion 360, iterating and fabricating rapidly for waterproofing and durability for field use",
       "Designed and built a bone-conduction headset for underwater use by researchers, enabling clear audio playback for real-time dolphin vocalization translation and two-way communication",
       "Co-authored research papers documenting system design and field findings for submission to international conferences in animal-computer interaction and marine robotics"
-    ]
-  },
-  {
-    role: "Graduate Teaching Assistant",
-    org: "Georgia Institute of Technology",
-    date: "May 2025 – Present",
-    details: [
-      "Served as a teaching assistant for Mobile and Ubiquitous Computing and Prototyping Intelligent Devices; graduate-level, project based courses on embedded systems, firmware development, and edge machine learning",
-      "Guided 8 student teams in developing app prototypes and custom microcontroller projects, providing mentorship on report authorship that led to higher project success rates and more polished deliverables.",
-      "Hosted office hours and asynchronous feedback sessions, guiding students through technical and research hurdles"
     ]
   },
   {
