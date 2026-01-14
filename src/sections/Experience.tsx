@@ -13,10 +13,11 @@ export default function Experience() {
 
   const displayedItems = useMemo(() => {
     if (showAll) return items
-    return items.slice(0, 4)
+    return items.slice(0, 3)
   }, [items, showAll])
 
-  const hasMoreItems = items.length > 4
+  const hasMoreItems = items.length > 3
+  const hiddenCount = Math.max(0, items.length - 3)
   
   return (
     <Section id="experience" className="py-12 md:py-20">
@@ -69,7 +70,7 @@ export default function Experience() {
               onClick={() => setShowAll(!showAll)}
               className="group inline-flex items-center gap-2 rounded-2xl border border-border px-6 py-3 text-sm font-medium text-accent-white transition-all hover:border-accent-green hover:text-accent-green hover:shadow-sm"
             >
-              {showAll ? 'Show Less' : 'Show More'}
+              {showAll ? 'Show Less' : `Show ${hiddenCount} more`}
               {showAll ? (
                 <ChevronUp className="size-4 transition-transform duration-200" />
               ) : (

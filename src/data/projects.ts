@@ -10,7 +10,7 @@ export type Project = {
   previewGif?: string;
   links?: { link?: string; code?: string };
   area?: "Robotics" | "Embedded" | "AI/ML" | "Other";
-  status?: 'Active' | 'In Progress' | 'Paused' | 'Archived' | 'Complete';
+  status?: 'Active' | 'Complete';
   active?: boolean;
   body?: string;             
   gallery?: string[];        
@@ -55,10 +55,40 @@ export const PROJECTS: Project[] = [
       "media/blip-auv/blip_11.jpg",]
   },
   {
+    slug: "tactile-sensing",
+    title: "Tactile Sensing for Robotic Manipulation and Collaborative Tasks",
+    blurb: "Research and development of a custom gripper and integration of tactile sensing technology for collaborative transport.",
+    tags: ["Robotics", "Sensors", "Manipulation", "Controls", "Fusion360"],
+    area: "Robotics",
+    status: "Active",
+    thumb: "media/tactile-sensing/tactile-sensing_thumb.jpeg",
+    previewVideo: "",
+    mainVideo: "",
+    links: { code: "" },
+    body: `I am designing a modular gripper for a KUKA manipulator intended to accept custom flexible tactile sensors I am developing, inspired by 3D‑ViTac (https://binghao-huang.github.io/3D-ViTac/). This work is ongoing at the LIDAR Lab, Georgia Tech.
+
+    I'm responsible for CAD and prototype fabrication of the gripper with sensor layout and fabrication for conformal, flexible arrays. Current experiments focus on mounting repeatability and validating sensor spatial resolution and shear sensitivity on representative manipulation tasks. Near‑term objectives are to ensure reliable mounting and repeatable contact measurements and to iterate gripper geometry for collaborative transport.`,
+    gallery: []
+  },
+  // {
+  //   slug: "advanced-mobile-robotics",
+  //   title: "Advanced Mobile Robotics: Estimation, SLAM, and LiDAR–Inertial Odometry",
+  //   blurb: "A sequence of robotics implementations spanning robot mobility, optimization, estimation, and control for swimming, land-roaming, and flying robots.",
+  //   tags: ["Robotics", "Python", "Webots", "Control", "SLAM", "Navigation"],
+  //   area: "Robotics",
+  //   status: "Active",
+  //   thumb: "",
+  //   previewVideo: "",
+  //   mainVideo: "",
+  //   links: { code: "" },
+  //   body: ``,
+  //   gallery: []
+  // },
+  {
     slug: "turtlebot3-ros2",
     title: "ROS2 Perception, Planning, and Control Experiments with TurtleBot3",
     blurb: "Exploring robotics principles in ROS2 using the TurtleBot3 platform, including SLAM, navigation, and computer vision.",
-    tags: ["Robotics", "AI/ML", "ROS2", "OpenCV", "Gazebo", "SLAM"],
+    tags: ["Robotics", "AI/ML", "Python", "ROS2", "OpenCV", "Gazebo"],
     area: "Robotics",
     status: "Complete",
     thumb: "media/turtlebot3/turtlebot3_thumb.jpg",

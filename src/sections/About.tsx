@@ -11,7 +11,7 @@ import { PROFILE } from "@/data/links";
 const STATUS_MESSAGES = [
   "conference papers.",
   "robots.",
-  "tactile sensors.",
+  "tactile sensing.",
   "grad ML.",
 ];
 

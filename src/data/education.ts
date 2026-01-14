@@ -14,9 +14,9 @@ export const EDUCATION: Education[] = [
         degree: "M.S. Robotics",
         date: "2025 – 2027",
         details: [
-            "Concentration: Artificial Intelligence, Perception, and Controls",
+            "Concentration: Artificial Intelligence, Perception, and Mechanics",
             "Activities and Societies: Graduate Research, HackGT Hackathon Overall Winner, AI ATL Hackathon Winner, Transfer2Tech Mentor",
-            "Coursework: Artificial Intelligence, Machine Learning, Computer Vision, Deep Learning, Deep Reinforcement Learning, Linear Control Systems, Nonlinear Control Systems",
+            "Coursework: Artificial Intelligence, Machine Learning, Computer Vision, Advanced Mobile Robotics, Deep Reinforcement Learning, Mechatronics",
         ],
         logoKey: "gt",
         logoSize: 72,
