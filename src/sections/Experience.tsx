@@ -1,6 +1,7 @@
 import React, {useMemo, useState} from "react";
 import Section from "@/components/Section";
 import Container from "@/components/Container";
+import StatusIndicator from "@/components/StatusIndicator";
 import { EXPERIENCES } from "@/data/experience";
 import { ChevronDown, ChevronUp } from 'lucide-react'
 
@@ -35,19 +36,7 @@ export default function Experience() {
 
                 {exp.status === "Incoming" && (
                   <div className="flex-shrink-0">
-                    <span className="inline-flex items-center gap-2 text-sm font-medium text-emerald-400">
-                      <span className="relative inline-flex h-2.5 w-2.5">
-                        <span
-                          className="absolute inset-0 rounded-full bg-emerald-400 opacity-100 shadow-[0_0_12px_3px_rgba(16,185,129,0.9)]"
-                          aria-hidden
-                        />
-                        <span
-                          className="absolute inset-0 rounded-full bg-emerald-400/80 blur-[4px] animate-[pulse_1.5s_ease-in-out_infinite]"
-                          aria-hidden
-                        />
-                      </span>
-                      Incoming
-                    </span>
+                    <StatusIndicator label="Incoming" />
                   </div>
                 )}
               </div>
