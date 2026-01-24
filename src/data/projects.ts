@@ -11,7 +11,6 @@ export type Project = {
   links?: { link?: string; code?: string };
   area?: "Robotics" | "Embedded" | "AI/ML" | "Other";
   status?: 'Active' | 'Complete';
-  active?: boolean;
   body?: string;             
   gallery?: string[];        
 };

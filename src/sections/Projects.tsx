@@ -151,7 +151,7 @@ export default function Projects() {
                 </div>
 
                 {/* Buttons/Active indicator - anchored to bottom */}
-                {(p.links?.link || p.links?.code || p.active || p.status === 'Active') && (
+                {(p.links?.link || p.links?.code || p.status === 'Active') && (
                   <div className="mt-4 flex items-center gap-4 items-center">
                     {p.links?.link && (
                       <a
@@ -178,7 +178,7 @@ export default function Projects() {
                       </a>
                     )}
 
-                    {(p.active || p.status === 'Active') && (
+                    {p.status === 'Active' && (
                       <StatusIndicator label="Active" className="ml-auto px-2" />
                     )}
                   </div>
