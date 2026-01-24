@@ -1,66 +1,10 @@
-import React, { useMemo, useRef, useState, useEffect } from "react";
+import React, { useMemo, useState } from "react";
 import Section from "@/components/Section";
 import Container from "@/components/Container";
 import StatusIndicator from "@/components/StatusIndicator";
+import MediaPreview from "@/components/MediaPreview";
 import { RESEARCH } from "@/data/research";
 import { ExternalLink, Github } from "lucide-react";
-
-/** Build a base-aware URL for files in /public */
-const withBase = (path?: string) =>
-  path ? `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}` : undefined;
-
-function MediaPreview({
-  title,
-  thumb,
-  previewVideo,
-  hovering,
-}: {
-  title: string;
-  thumb?: string;
-  previewVideo?: string;
-  hovering: boolean;
-}) {
-  const videoRef = useRef<HTMLVideoElement | null>(null);
-
-  useEffect(() => {
-    if (hovering && videoRef.current) {
-      videoRef.current.currentTime = 0;
-      videoRef.current.play().catch(() => { });
-    } else if (!hovering && videoRef.current) {
-      videoRef.current.pause();
-      videoRef.current.currentTime = 0;
-    }
-  }, [hovering]);
-
-  return (
-    <div className="relative overflow-hidden rounded-xl border border-border bg-bg">
-      {hovering && previewVideo ? (
-        <video
-          ref={videoRef}
-          className="h-24 w-40 object-cover sm:h-28 sm:w-48 md:h-32 md:w-56 lg:h-36 lg:w-64"
-          muted
-          playsInline
-          loop
-          preload="metadata"
-          poster={thumb ? withBase(thumb) : undefined}
-          src={withBase(previewVideo)}
-          aria-label={`${title} preview`}
-        />
-      ) : thumb ? (
-        <img
-          className="h-24 w-40 object-cover sm:h-28 sm:w-48 md:h-32 md:w-56 lg:h-36 lg:w-64"
-          src={withBase(thumb)}
-          alt={`${title} thumbnail`}
-          loading="lazy"
-        />
-      ) : (
-        <div className="flex h-24 w-40 items-center justify-center text-subtext sm:h-28 sm:w-48 md:h-32 md:w-56 lg:h-36 lg:w-64">
-          No preview
-        </div>
-      )}
-    </div>
-  );
-}
 
 function formatAuthors(authors?: string[] | string) {
   if (!authors) return null;
@@ -111,6 +55,8 @@ export default function Research() {
                   thumb={p.thumb}
                   previewVideo={p.previewVideo}
                   hovering={hoveredIndex === idx}
+                  size="sm"
+                  rounded="xl"
                 />
 
                 {/* Right: metadata */}

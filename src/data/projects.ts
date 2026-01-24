@@ -58,7 +58,7 @@ export const PROJECTS: Project[] = [
     slug: "tactile-sensing",
     title: "Tactile Sensing for Robotic Manipulation and Collaborative Tasks",
     blurb: "Research and development of a custom gripper and integration of tactile sensing technology for collaborative transport tasks.",
-    tags: ["Robotics", "IssacSim", "Sensors", "Manipulation", "Controls", "Fusion360"],
+    tags: ["Robotics", "Isaac Sim", "Sensors", "Manipulation", "Controls", "Fusion360"],
     area: "Robotics",
     status: "Active",
     thumb: "media/tactile-sensing/tactile-sensing_thumb.jpeg",

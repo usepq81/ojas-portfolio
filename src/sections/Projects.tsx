@@ -1,76 +1,11 @@
-import React, { useMemo, useRef, useState, useEffect } from 'react'
+import React, { useMemo, useState, useEffect } from 'react'
 import Section from '@/components/Section'
 import Container from '@/components/Container'
 import StatusIndicator from '@/components/StatusIndicator'
+import MediaPreview, { withBase } from '@/components/MediaPreview'
 import { PROJECTS } from '@/data/projects'
 import { Link } from 'react-router-dom'
 import { Github, ExternalLink, ChevronDown, ChevronUp } from 'lucide-react'
-
-const withBase = (path?: string) =>
-  path ? `${import.meta.env.BASE_URL}${path.replace(/^\/+/, '')}` : undefined
-
-function Preview({
-  title,
-  thumb,
-  previewVideo,
-  hovering,
-}: {
-  title: string
-  thumb?: string
-  previewVideo?: string
-  hovering: boolean
-}) {
-  const videoRef = useRef<HTMLVideoElement | null>(null)
-  const [imageLoaded, setImageLoaded] = useState(false)
-
-  useEffect(() => {
-    if (hovering && videoRef.current) {
-      videoRef.current.currentTime = 0
-      videoRef.current.play().catch(() => { })
-    } else if (!hovering && videoRef.current) {
-      videoRef.current.pause()
-      videoRef.current.currentTime = 0
-    }
-  }, [hovering])
-
-  return (
-    <div className="relative overflow-hidden rounded-2xl border border-border bg-bg">
-      {hovering && previewVideo ? (
-        <video
-          ref={videoRef}
-          className="h-44 w-full object-cover md:h-48"
-          muted
-          playsInline
-          loop
-          preload="none"
-          poster={thumb ? withBase(thumb) : undefined}
-          src={withBase(previewVideo)}
-          aria-label={`${title} preview`}
-        />
-      ) : thumb ? (
-        <div className="relative">
-          {!imageLoaded && (
-            <div className="absolute inset-0 bg-panel animate-pulse h-44 md:h-48" />
-          )}
-          <img
-            className={`h-44 w-full object-cover md:h-48 transition-opacity duration-300 ${
-              imageLoaded ? 'opacity-100' : 'opacity-0'
-            }`}
-            src={withBase(thumb)}
-            alt={title}
-            loading="lazy"
-            onLoad={() => setImageLoaded(true)}
-            onError={() => setImageLoaded(true)} 
-          />
-        </div>
-      ) : (
-        <div className="flex h-44 w-full items-center justify-center text-subtext md:h-48">
-          No preview
-        </div>
-      )}
-    </div>
-  )
-}
 
 export default function Projects() {
   const [activeFilter, setActiveFilter] = useState<
@@ -169,7 +104,7 @@ export default function Projects() {
               onMouseLeave={() => setHoveredSlug(null)}
             >
               <div className="pt-4 px-4">
-                <Preview
+                <MediaPreview
                   title={p.title}
                   thumb={p.thumb}
                   previewVideo={p.previewVideo}
