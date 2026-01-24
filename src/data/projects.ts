@@ -57,31 +57,37 @@ export const PROJECTS: Project[] = [
   {
     slug: "tactile-sensing",
     title: "Tactile Sensing for Robotic Manipulation and Collaborative Tasks",
-    blurb: "Research and development of a custom gripper and integration of tactile sensing technology for collaborative transport.",
-    tags: ["Robotics", "Sensors", "Manipulation", "Controls", "Fusion360"],
+    blurb: "Research and development of a custom gripper and integration of tactile sensing technology for collaborative transport tasks.",
+    tags: ["Robotics", "IssacSim", "Sensors", "Manipulation", "Controls", "Fusion360"],
     area: "Robotics",
     status: "Active",
     thumb: "media/tactile-sensing/tactile-sensing_thumb.jpeg",
-    previewVideo: "",
+    previewVideo: "media/tactile-sensing/tactile-sensing_preview.mov",
     mainVideo: "",
     links: { code: "" },
     body: `I am designing a modular gripper for a KUKA manipulator intended to accept custom flexible tactile sensors I am developing, inspired by 3D‑ViTac (https://binghao-huang.github.io/3D-ViTac/). This work is ongoing at the LIDAR Lab, Georgia Tech.
 
-    I'm responsible for CAD and prototype fabrication of the gripper with sensor layout and fabrication for conformal, flexible arrays. Current experiments focus on mounting repeatability and validating sensor spatial resolution and shear sensitivity on representative manipulation tasks. Near‑term objectives are to ensure reliable mounting and repeatable contact measurements and to iterate gripper geometry for collaborative transport.`,
+    I'm responsible for CAD and prototype fabrication of the gripper with sensor layout and fabrication for conformal, flexible arrays. I am also working on real2sim integration in NVIDIA IssacSim, including tactile sensor simulation and control strategies for collaborative transport tasks.
+    
+    The second gripper I am working on engineering tasks for is the Inspire hand from Inspire robotics. This hand has built-in tactile sensing, and I am working on real to sim in Issac Sim for this hand as well.`,
     gallery: []
   },
   // {
   //   slug: "advanced-mobile-robotics",
   //   title: "Advanced Mobile Robotics: Estimation, SLAM, and LiDAR–Inertial Odometry",
   //   blurb: "A sequence of robotics implementations spanning robot mobility, optimization, estimation, and control for swimming, land-roaming, and flying robots.",
-  //   tags: ["Robotics", "Python", "Webots", "Control", "SLAM", "Navigation"],
+  //   tags: ["Robotics", "Python", "GTSAM", "Webots", "Control", "SLAM"],
   //   area: "Robotics",
   //   status: "Active",
-  //   thumb: "",
+  //   thumb: "media/advanced-mobile-robotics/advanced-mobile-robotics_thumb.jpg",
   //   previewVideo: "",
   //   mainVideo: "",
   //   links: { code: "" },
-  //   body: ``,
+  //   body: `This project page tracks my work in Georgia Tech’s Advanced Mobile Robotics course. So far, the focus has been on rigid-body kinematics, coordinate frames, and transformations, with implementations tested in Webots simulation.
+
+  //   We are using GTSAM (in Python) to build intuition around factor-graph–based estimation, which will later expand into filtering, SLAM, and LiDAR–inertial odometry as the course progresses.
+
+  //   [In progress: more details coming soon.]`,
   //   gallery: []
   // },
   {
