@@ -3,6 +3,7 @@ export type ContentSection =
   | { type: 'video'; src: string; caption?: string }
   | { type: 'videos'; items: string[]; caption?: string }
   | { type: 'image'; src: string; caption?: string }
+  | { type: 'images'; items: string[]; caption?: string }
   | { type: 'youtube'; videoId: string; caption?: string };
 
 export type Project = {
@@ -35,31 +36,29 @@ export const PROJECTS: Project[] = [
     previewVideo: "media/blip-auv/blip_preview.mp4",
     mainVideo: "media/blip-auv/blip_main.mp4",
     links: { link: "https://www.linkedin.com/posts/ojas-mediratta_robotics-embedded-signalprocessing-activity-7358290478351478784-0Afr?utm_source=share&utm_medium=member_desktop&rcm=ACoAADdTxJgB6uIFgkQecw_eTHt3ywpT-XIfTt8" },
-    body: `BLIP is an autonomous and remotely-operated underwater vehicle built for dolphin communication research. It started as a collaboration between the Wild Dolphin Project and Georgia Tech’s Contextual Computing Group, and it has grown into a platform that lets us study how dolphins respond to interactive acoustic signals in the wild. The goal was to build a robot that can listen, interpret, and react to dolphin whistles in real time.
+    sections: [
+      { type: 'text', content: `BLIP is an autonomous and remotely-operated underwater vehicle built for dolphin communication research. It started as a collaboration between the Wild Dolphin Project and Georgia Tech’s Contextual Computing Group, and it has grown into a platform that lets us study how dolphins respond to interactive acoustic signals in the wild. The goal was to build a robot that can listen, interpret, and react to dolphin whistles in real time.` },
+      { type: 'text', content: `The project has been through more than 15 pool trials and several ocean deployments, with each consecutive deployment giving us more data and insights. Some important considerations were that BLIP needed to be repairable in the field, pressure tolerant, and easy to deploy by one person, so we spent a lot of time on the design with those constraints.` },
+      { type: 'video', src: 'media/blip-auv/blip_1.mp4', caption: 'Early in-water trials and pool tests' },
+      { type: 'text', content: `I owned the entire software, firmware, and most of the electrical integration of the system. I built some software tools to make using the robot easier for the non-technical marine biologists on the team, like the pipeline for real-time parameter tuning that they relied on during deployments. I implemented the OTA update system that let us push fixes without opening the robot, and developed the live web telemetry site that streamed robot state and acoustic detections in real time. These tools ended up being very important during field operations.` },
+      { type: 'video', src: 'media/blip-auv/blip_4.mp4', caption: 'Tone recognition test' },
+      { type: 'text', content: `On the embedded side, I designed and implemented the full control layer that linked an ESP32-based thruster controller with an onboard Google Pixel 9. The ESP32 handled cascaded PID-mixed thruster control across four degrees of freedom, and the Pixel ran all digital signal processing on the hydrophone stream. I built the DSP pipeline from the ground up, starting with Goertzel filters and template matching, then expanding into FFT processing that fed into a CNN classifier. Once a whistle was detected, the system mapped it to interactive behaviors so the robot could respond in a way that fit the rhythm of dolphin communication.` },
+      { type: 'text', content: `A lot of my time also went into the internal electronics. As the robot's enclosure changed through different iterations, I handled the sensor stack, power distribution, wiring architecture, bi-directional communication links, and the integration work that kept everything working and fitting inside the confined pressure vessel.` },
+      { type: 'video', src: 'media/blip-auv/blip_12.mp4', caption: 'Early PID tuning in water' },
+      { type: 'text', content: `Working across so many layers of the system taught me a lot of engineering lessons and forced me to become good at a lot of different things. Jumping between software, firmware, and hardware forced me to learn quickly and understand how decisions in one part of the stack affect everything else. It shaped me into more of a generalist who can move through a wide spectrum of problems and keep a complex system working as a whole.` },
+      { type: 'text', content: `BLIP is still growing as a research platform. We are expanding its acoustic vocabulary, increasing reliability for longer deployments, and exploring how underwater robots can participate in broader studies of marine communication and behavior.` },
 
-    The project has been through more than 15 pool trials and several ocean deployments, with each consecutive deployment giving us more data and insights. Some important considerations were that BLIP needed to be repairable in the field, pressure tolerant, and easy to deploy by one person, so we spent a lot of time on the design with those constraints.
-
-    I owned the entire software, firmware, and most of the electrical integration of the system. I built some software tools to make using the robot easier for the non-technical marine biologists on the team, like the pipeline for real-time parameter tuning that they relied on during deployments. I implemented the OTA update system that let us push fixes without opening the robot, and developed the live web telemetry site that streamed robot state and acoustic detections in real time. These tools ended up being very important during field operations.
-
-    On the embedded side, I designed and implemented the full control layer that linked an ESP32-based thruster controller with an onboard Google Pixel 9. The ESP32 handled cascaded PID-mixed thruster control across four degrees of freedom, and the Pixel ran all digital signal processing on the hydrophone stream. I built the DSP pipeline from the ground up, starting with Goertzel filters and template matching, then expanding into FFT processing that fed into a CNN classifier. Once a whistle was detected, the system mapped it to interactive behaviors so the robot could respond in a way that fit the rhythm of dolphin communication. 
-    
-    A lot of my time also went into the internal electronics. As the robot's enclosure changed through different iterations, I handled the sensor stack, power distribution, wiring architecture, bi-directional communication links, and the integration work that kept everything working and fitting inside the confined pressure vessel. 
-
-    Working across so many layers of the system taught me a lot of engineering lessons and forced me to become good at a lot of different things. Jumping between software, firmware, and hardware forced me to learn quickly and understand how decisions in one part of the stack affect everything else. It shaped me into more of a generalist who can move through a wide spectrum of problems and keep a complex system working as a whole.
-    
-    BLIP is still growing as a research platform. We are expanding its acoustic vocabulary, increasing reliability for longer deployments, and exploring how underwater robots can participate in broader studies of marine communication and behavior.`,
+    ],
     gallery: [
-      "media/blip-auv/blip_1.mp4",
       "media/blip-auv/blip_2.jpg",
       "media/blip-auv/blip_3.jpg",
-      "media/blip-auv/blip_4.mp4",
       "media/blip-auv/blip_5.jpg",
       "media/blip-auv/blip_6.jpg",
       "media/blip-auv/blip_7.jpg",
       "media/blip-auv/blip_8.jpg",
       "media/blip-auv/blip_9.jpg",
       "media/blip-auv/blip_10.jpg",
-      "media/blip-auv/blip_11.jpg",]
+      "media/blip-auv/blip_11.jpg"]
   },
   {
     slug: "tactile-sensing",
@@ -72,11 +71,11 @@ export const PROJECTS: Project[] = [
     previewVideo: "media/tactile-sensing/tactile-sensing_preview.mov",
     mainVideo: "",
     links: { code: "" },
-    body: `I am designing a modular gripper for a KUKA manipulator intended to accept custom flexible tactile sensors I am developing, inspired by 3D‑ViTac (https://binghao-huang.github.io/3D-ViTac/). This work is ongoing at the LIDAR Lab, Georgia Tech.
-
-    I'm responsible for CAD and prototype fabrication of the gripper with sensor layout and fabrication for conformal, flexible arrays. I am also working on real2sim integration in NVIDIA IssacSim, including tactile sensor simulation and control strategies for collaborative transport tasks.
-    
-    The second gripper I am working on engineering tasks for is the Inspire hand from Inspire robotics. This hand has built-in tactile sensing, and I am working on real to sim in Issac Sim for this hand as well.`,
+    sections: [
+      { type: 'text', content: `I am designing a modular gripper for a KUKA manipulator intended to accept custom flexible tactile sensors I am developing, inspired by 3D‑ViTac (https://binghao-huang.github.io/3D-ViTac/). This work is ongoing at the LIDAR Lab, Georgia Tech.` },
+      { type: 'text', content: `I'm responsible for CAD and prototype fabrication of the gripper with sensor layout and fabrication for conformal, flexible arrays. I am also working on real2sim integration in NVIDIA IssacSim, including tactile sensor simulation and control strategies for collaborative transport tasks.` },
+      { type: 'text', content: `The second gripper I am working on engineering tasks for is the Inspire hand from Inspire robotics. This hand has built-in tactile sensing, and I am working on real to sim in Issac Sim for this hand as well.` }
+    ],
     gallery: []
   },
   // {
@@ -109,44 +108,16 @@ export const PROJECTS: Project[] = [
     mainVideo: "media/turtlebot3/turtlebot3_preview.mp4",
     links: { code: "https://github.com/ojas-mediratta/turtlebot3-ros2" },
     sections: [
-      {
-        type: 'text',
-        content: `This project was an ongoing exploration of perception, localization, and control using ROS2 on the TurtleBot3 platform. It taught me the fundamentals of the ROS 2 ecosystem in a practical, hands-on way as opposed to working exclusively in sim.
-
-        I began with a simple perception pipeline that used OpenCV to detect and track colored objects (all written in Python). From there, I tied everything into ROS 2 topics so the robot could publish processed images and target coordinates in real time. Once that worked, I built a cascaded PID controller that fused camera and LIDAR inputs, which allowed the robot to chase moving targets while keeping a safe buffer of distance and maintaining alignment.`
-      },
-      {
-        type: 'videos',
-        items: ['media/turtlebot3/turtlebot3_1.mp4', 'media/turtlebot3/turtlebot3_3.mp4'],
-        caption: 'OpenCV tracking demo with port to ROS2'
-      },
-      {
-        type: 'text',
-        content: `After that, I shifted toward navigation. I built a Go-to-Goal controller that blended odometry and LIDAR sensing for reactive obstacle avoidance. The robot computed velocity commands based on real-time obstacle vectors and could move toward arbitrary goal positions while steering cleanly around whatever got in the way. This part of the project taught me a lot about low-level control and sensor fusion.`
-      },
-      {
-        type: 'video',
-        src: 'media/turtlebot3/turtlebot3_4.mp4',
-        caption: 'Waypoint navigation with obstacle avoidance'
-      },
-      {
-        type: 'text',
-        content: `The next phase focused on full mapping, localization, and global navigation with the ROS 2 Nav2 stack. I set up AMCL for reliable pose estimation, and tuned costmap and controller parameters until the robot could handle narrow hallways without drifting or oscillating. To automate longer missions, I wrote a ROS 2 node that publishes sequential waypoints to the /goal_pose topic so the robot can traverse a full route on its own. I tested everything in Gazebo's maze world and then transferred it to the physical TurtleBot3, where it performed well.
-        
-        The final project brought everything together in a maze navigation task that required real-time sign classification using computer vision. The robot had to autonomously navigate through a maze while identifying and responding to visual commands posted at intersections. We experimented with several machine learning approaches for image classification, testing different models to balance accuracy with computational constraints. After evaluating options including deep learning architectures (just for fun, these were way too big to run on our limited turtlebot3 as we learned), we settled on a Support Vector Machine (SVM) classifier. The SVM proved to be lightweight enough to run directly onboard the TurtleBot3 while still delivering excellent classification performance. We ended up completing the course near perfectly, with the exception of one misclassification.`
-      },
-      {
-        type: 'videos',
-        items: ['media/turtlebot3/turtlebot3_5.mp4', 'media/turtlebot3/turtlebot3_preview.mp4'],
-        caption: 'Localization and sign-based maze navigation demos'
-      }
-    ],
-    gallery: [
-      "media/turtlebot3/turtlebot3_1.mp4",
-      "media/turtlebot3/turtlebot3_2.mp4",
-      "media/turtlebot3/turtlebot3_3.mp4",
-      "media/turtlebot3/turtlebot3_4.mp4",
-      "media/turtlebot3/turtlebot3_5.mp4",]
+      { type: 'text', content: `This project was an ongoing exploration of perception, localization, and control using ROS2 on the TurtleBot3 platform. It taught me the fundamentals of the ROS 2 ecosystem in a practical, hands-on way as opposed to working exclusively in sim. ` },
+      { type: 'text', content: `I began with a simple perception pipeline that used OpenCV to detect and track colored objects (all written in Python). From there, I tied everything into ROS 2 topics so the robot could publish processed images and target coordinates in real time. Once that worked, I built a cascaded PID controller that fused camera and LIDAR inputs, which allowed the robot to chase moving targets while keeping a safe buffer of distance and maintaining alignment.` },
+      { type: 'videos', items: ['media/turtlebot3/turtlebot3_1.mp4', 'media/turtlebot3/turtlebot3_3.mp4'], caption: 'OpenCV tracking demo with port to ROS2' },
+      { type: 'text', content: `After that, I shifted toward navigation. I built a Go-to-Goal controller that blended odometry and LIDAR sensing for reactive obstacle avoidance. The robot computed velocity commands based on real-time obstacle vectors and could move toward arbitrary goal positions while steering cleanly around whatever got in the way. This part of the project taught me a lot about low-level control and sensor fusion.` },
+      { type: 'video', src: 'media/turtlebot3/turtlebot3_4.mp4', caption: 'Waypoint navigation with obstacle avoidance' },
+      { type: 'text', content: `The next phase focused on full mapping, localization, and global navigation with the ROS 2 Nav2 stack. I set up AMCL for reliable pose estimation, and tuned costmap and controller parameters until the robot could handle narrow hallways without drifting or oscillating. To automate longer missions, I wrote a ROS 2 node that publishes sequential waypoints to the /goal_pose topic so the robot can traverse a full route on its own. I tested everything in Gazebo's maze world and then transferred it to the physical TurtleBot3, where it performed well.` },
+      { type: 'text', content: `The final project brought everything together in a maze navigation task that required real-time sign classification using computer vision. The robot had to autonomously navigate through a maze while identifying and responding to visual commands posted at intersections. We experimented with several machine learning approaches for image classification, testing different models to balance accuracy with computational constraints. After evaluating options including deep learning architectures (just for fun, these were way too big to run on our limited turtlebot3 as we learned), we settled on a Support Vector Machine (SVM) classifier. The SVM proved to be lightweight enough to run directly onboard the TurtleBot3 while still delivering excellent classification performance. We ended up completing the course near perfectly, with the exception of one misclassification.` },
+      { type: 'videos', items: ['media/turtlebot3/turtlebot3_5.mp4', 'media/turtlebot3/turtlebot3_preview.mp4'], caption: 'Localization and sign-based maze navigation demos' },
+      { type: 'text', content: `Overall, I'm quite satisfied with the skills I was able to develop working with ROS2 and robotics fundamentals like perception and navigation. View my code and the rest of my work in the linked GitHub repository.` },
+    ]
   },
   {
     slug: "buzzcaster-guitar",
@@ -158,20 +129,19 @@ export const PROJECTS: Project[] = [
     thumb: "media/buzzcaster/buzzcaster_thumb.jpg",
     previewVideo: "media/buzzcaster/buzzcaster_preview.mp4",
     links: { code: "https://github.com/ojas-mediratta/BuzzCaster-Guitar" },
-    body: `Guitar has been one of my passions for over a decade. I have spent countless hours playing and trying out different gear like pedals and amps. When it came time to choose a final project for CS 3651 (Prototyping Intelligent Devices), I saw the chance to bring that passion together with my interest in embedded systems: building a guitar with its own onboard effects.
-
-    The result was BuzzCaster, a custom guitar project that integrates a complete digital signal processing (DSP) chain directly inside the instrument. Instead of relying on external pedals and cables, the guitar itself handles delay, reverb, chorus, and distortion through a Teensy microcontroller running PJRC’s real-time audio framework. The goal was to keep the instrument familiar in form and playability, while giving it the flexibility of a built-in effects unit.
-
-    Making this possible required significant design work. I routed out the guitar body to house the electronics, created a compact LCD and encoder interface for real-time control, and tuned the preamp to preserve the pickups’ natural impedance. Power stability was another challenge, so I designed a dedicated battery housing and safeguards to handle USB quirks and power bank issues.
-
-    The project had a lot of different parts in which I learned a lot. There was a lot of work with circuit prototyping, 3D-printed mounting solutions and firmware development. By the end, I had not only a fully playable instrument but also a proof of concept in embedded audio design.
-
-    More details, including schematics, firmware, and build notes, are documented in the repo README.`,
+    sections: [
+      { type: 'text', content: `Guitar has been one of my passions for over a decade. I have spent countless hours playing and trying out different gear like pedals and amps. When it came time to choose a final project for CS 3651 (Prototyping Intelligent Devices), I saw the chance to bring that passion together with my interest in embedded systems: building a guitar with its own onboard effects.` },
+      { type: 'text', content: `The result was BuzzCaster, a custom guitar project that integrates a complete digital signal processing (DSP) chain directly inside the instrument. Instead of relying on external pedals and cables, the guitar itself handles delay, reverb, chorus, and distortion through a Teensy microcontroller running PJRC’s real-time audio framework. The goal was to keep the instrument familiar in form and playability, while giving it the flexibility of a built-in effects unit.` },
+      { type: 'video', src: 'media/buzzcaster/buzzcaster_4.mp4', caption: 'Early circuit prototyping' },
+      { type: 'text', content: `Making this possible required significant design work. I routed out the guitar body to house the electronics, created a compact LCD and encoder interface for real-time control, and tuned the preamp to preserve the pickups’ natural impedance. Power stability was another challenge, so I designed a dedicated battery housing and safeguards to handle USB quirks and power bank issues.` },
+      { type: 'images', items: ['media/buzzcaster/buzzcaster_6.jpg', 'media/buzzcaster/buzzcaster_7.jpg'], caption: 'Routing and laser engraving the body' },
+      { type: 'text', content: `The project had a lot of different parts in which I learned a lot. There was a lot of work with circuit prototyping, 3D-printed mounting solutions and firmware development. By the end, I had not only a fully playable instrument but also a proof of concept in embedded audio design.` },
+      { type: 'text', content: `More details, including schematics, firmware, and build notes, are documented in the repo README.` },
+    ],
     gallery: [
       "media/buzzcaster/buzzcaster_1.jpg",
       "media/buzzcaster/buzzcaster_2.jpg",
       "media/buzzcaster/buzzcaster_3.jpg",
-      "media/buzzcaster/buzzcaster_4.mp4",
       "media/buzzcaster/buzzcaster_5.jpg",
       "media/buzzcaster/buzzcaster_6.jpg",
       "media/buzzcaster/buzzcaster_7.jpg",
@@ -191,20 +161,20 @@ export const PROJECTS: Project[] = [
     previewVideo: "media/et55/et55_preview.mp4",
     mainVideo: "media/et55/et55_main.mp4",
     links: { code: "https://github.com/ojas-mediratta/ET55-Keyboard" },
-    body: `I have been building mechanical keyboards for years, so when ECE 4180 (Embedded Systems Design) came around, I treated the final project as an excuse to make yet another custom keyboard, but this time with my own embedded microcontroller instead of building cases around popular open source PCBs. That turned into ET55: a 55-key, hand-wired board shaped by vintage IBM layouts but designed around the embedded work I wanted to explore.
-
-    The build followed the classic hand-wired approach. I wired every switch individually, added diodes for proper NKRO, and heat-shrunk each joint to avoid shorts on the copper wire. For the controller, I used a Pro Micro (ATmega32U4) running QMK and set up a four-layer layout that fit the compact form factor. I mounted the microcontroller on external pin headers so it could be easily removed. That mattered because the board had to be returned at the end of the course, so I wanted it to be genuinely plug-and-play.
-
-    I added a few other features while I was at it. The board has a rotary encoder that works as a volume knob and layer switch, and a small OLED display for status info. I modeled and 3D-printed a custom case and plate, adjusting tolerances over a few prints until the fit felt solid and the switches seated cleanly despite the wiring bundle underneath.
-
-    In the end, it was a fun project which let me use many of the skills I had already developed in my own personal hobby. It slots naturally into my collection, but it also became one of the most technically complete boards I have built.
-
-    [See the repo README for full build notes.]`,
+    sections: [
+      { type: 'text', content: `Mechanical keyboards have been a hobby of mine for years. I love the tactile feel of quality switches, the sound of well-built boards, and the endless customization options that let me tailor my typing experience. Over time, I have built several custom keyboards from kits and parts, but I had never designed and built one entirely from scratch—until ET55.` },
+      { type: 'text', content: `ET55 is a 55-key, hand-wired mechanical keyboard that blends the vintage feel of IBM Model F layouts with modern features like QMK firmware, USB-C connectivity, an OLED status screen, and a rotary-encoder volume knob. The design process was a deep dive into keyboard engineering, from switch selection and wiring to firmware configuration and case design.` },
+      { type: 'video', src: 'media/et55/et55_4.mp4', caption: 'Internals and physical design' },
+      { type: 'text', content: `Building ET55 involved several key steps. First, I designed the layout and wiring schematic, ensuring that every switch was correctly placed and connected for NKRO functionality. I hand-wired each switch using diodes and copper wire, taking care to insulate connections with heat shrink tubing to prevent shorts.` },
+      { type: 'images', items: ['media/et55/et55_2.jpg', 'media/et55/et55_3.jpg'], caption: 'Hand-wiring the switches and diodes' },
+      { type: 'text', content: `Next, I integrated a Pro Micro (ATmega32U4) microcontroller to handle the keyboard’s logic and communication. I programmed it using QMK firmware, customizing the keymap to fit the compact layout and adding layers for additional functionality. The rotary encoder was set up to control volume and switch layers, while the OLED display provided real-time status updates.` },
+      { type: 'text', content: `For the case and plate, I modeled custom parts in Fusion 360 and 3D-printed them to achieve a precise fit. This process involved several iterations to refine tolerances and ensure that the switches seated properly despite the wiring underneath.` },
+      { type: 'text', content: `The final result is a compact, functional keyboard that feels great to type on and showcases my skills in embedded systems and mechanical design. ET55 has become a staple in my daily setup, combining nostalgia with modern convenience in a unique package.` },
+    ],
     gallery: [
       "media/et55/et55_1.jpg",
       "media/et55/et55_2.jpg",
       "media/et55/et55_3.jpg",
-      "media/et55/et55_4.mp4",
     ]
   },
   {
@@ -218,20 +188,18 @@ export const PROJECTS: Project[] = [
     previewVideo: "media/keyboard-design/keyboard-design_preview.mp4",
     mainVideo: "media/keyboard-design/keyboard-design_preview.mp4",
     links: { code: "https://github.com/ojas-mediratta/keyboard-design" },
-    body: `Like many in the enthusiast mechanical keyboard community, I started out fascinated by the design and engineering that go into custom boards. The scene thrives on experimentation with things like materials, mounting styles, switches, layouts, the list goes on. As someone who spent a lot of time on my computer, the community interested me and the cool looking and sounding boards I saw online triggered the consumerist part of my brain (too many hobbies are like this haha).
-
-      After a few months with a couple of off-the-shelf custom boards, I decided to take the plunge and design my own keyboard from scratch. I saw people on reddit posting interest checks for their designs, so I figured I could try that too. At the time (and even today) one of the most coveted boards was the TGR Singa Unikorn. It was a super simple design (so much so that the bakeneko, another popular board, was basically a Singa clone with a few tweaks), but it had this elegant, timeless aesthetic that I really liked. I decided to model something inspired by that style but with my own spin on it.
-    
-      With no prior experience in CAD, I dove into Fusion 360. At first, I barely knew how to sketch a rectangle, but I pushed through tutorials and geekhack posts to understand the practices involved when designing keyboards. Soon enough, I was able to produce a Unikorn clone that, in my opinion, was way nicer than the boards that people had been dropping $2000 on resale on r/MechMarket. After showing off my board at the Georgia Tech Mechanical Keyboard Club, I got a few messages from people interested in commissioning their own custom designs.
-
-      From there, freelance commissions grew organically. Clients would come with a concept, sometimes just a layout or an aesthetic inspiration, and I’d take on the challenge of turning it into a manufacturable design. That meant iterating on case geometry while still ensuring PCB compatibility, since I was still relying on pre-designed PCBs in my designs. I ended up doing a lot of Unikorn clones (for the reasons described above), but did some more unique one offs like the one shown in the video above, which was a 60% board with a stainless steel weight and a super special side profile.
-      
-      This journey has been as much about problem-solving as it has been about craft. What began as a personal desire for a one-off board turned into a series of freelance collaborations where I could merge technical design with the culture of enthusiast keyboards, producing pieces that are at once tools and expressions of identity.`,
+    sections: [
+      { type: 'text', content: `Like many in the enthusiast mechanical keyboard community, I started out fascinated by the design and engineering that go into custom boards. The scene thrives on experimentation with things like materials, mounting styles, switches, layouts, the list goes on. As someone who spent a lot of time on my computer, the community interested me and the cool looking and sounding boards I saw online triggered the consumerist part of my brain (too many hobbies are like this haha).` },
+      { type: 'images', items: ['media/keyboard-design/keyboard-design_27.jpeg', 'media/keyboard-design/keyboard-design_28.jpeg'], caption: 'My first custom prototype and my collection' },
+      { type: 'text', content: `After a few months with a couple of off-the-shelf custom boards, I decided to take the plunge and design my own keyboard from scratch. I saw people on reddit posting interest checks for their designs, so I figured I could try that too. At the time (and even today) one of the most coveted boards was the TGR Singa Unikorn. It was a super simple design (so much so that the bakeneko, another popular board, was basically a Singa clone with a few tweaks), but it had this elegant, timeless aesthetic that I really liked. I decided to model something inspired by that style but with my own spin on it.` },
+      { type: 'text', content: `With no prior experience in CAD, I dove into Fusion 360. At first, I barely knew how to sketch a rectangle, but I pushed through tutorials and geekhack posts to understand the practices involved when designing keyboards. Soon enough, I was able to produce a Unikorn clone that, in my opinion, was way nicer than the boards that people had been dropping $2000 on resale on r/MechMarket. After showing off my board at the Georgia Tech Mechanical Keyboard Club, I got a few messages from people interested in commissioning their own custom designs.` },
+      { type: 'videos', items: ['media/keyboard-design/keyboard-design_6.mp4', 'media/keyboard-design/keyboard-design_15.mp4'], caption: 'Client boards in-progress' },
+      { type: 'text', content: `From there, freelance commissions grew organically. Clients would come with a concept, sometimes just a layout or an aesthetic inspiration, and I’d take on the challenge of turning it into a manufacturable design. That meant iterating on case geometry while still ensuring PCB compatibility, since I was still relying on pre-designed PCBs in my designs. I ended up doing a lot of Unikorn clones (for the reasons described above), but did some more unique one offs like the one shown in the video above, which was a 60% board with a stainless steel weight and a super special side profile.` },
+      { type: 'videos', items: ['media/keyboard-design/keyboard-design_2.mp4', 'media/keyboard-design/keyboard-design_3.mp4'], caption: 'Aluminum machining for Endurance Proto v2' },
+      { type: 'text', content: `What started as just a desire for a one-off board turned into a series of freelance collaborations where I could merge cool technical design with the culture of enthusiast keyboards, producing pieces that are at once tools and expressions of identity. More in the gallery below!`}
+    ],
     gallery: [
-      "media/keyboard-design/keyboard-design_2.mp4",
-      "media/keyboard-design/keyboard-design_3.mp4",
       "media/keyboard-design/keyboard-design_5.jpg",
-      "media/keyboard-design/keyboard-design_6.mp4",
       "media/keyboard-design/keyboard-design_7.jpg",
       "media/keyboard-design/keyboard-design_8.jpg",
       "media/keyboard-design/keyboard-design_9.mp4",
@@ -240,7 +208,6 @@ export const PROJECTS: Project[] = [
       "media/keyboard-design/keyboard-design_12.jpg",
       "media/keyboard-design/keyboard-design_13.jpg",
       "media/keyboard-design/keyboard-design_14.jpg",
-      "media/keyboard-design/keyboard-design_15.mp4",
       "media/keyboard-design/keyboard-design_16.mp4",
       "media/keyboard-design/keyboard-design_17.jpg",
       "media/keyboard-design/keyboard-design_18.jpg",
@@ -250,6 +217,9 @@ export const PROJECTS: Project[] = [
       "media/keyboard-design/keyboard-design_22.jpg",
       "media/keyboard-design/keyboard-design_23.jpg",
       "media/keyboard-design/keyboard-design_24.jpg",
+      "media/keyboard-design/keyboard-design_25.jpeg",
+      "media/keyboard-design/keyboard-design_26.jpeg",
+      "media/keyboard-design/keyboard-design_29.jpeg",
     ]
   },
    {

@@ -4,7 +4,7 @@ import Container from "@/components/Container";
 import Section from "@/components/Section";
 import Gallery from "@/components/Gallery";
 import { PROJECTS, ContentSection } from "@/data/projects";
-import { ArrowLeft, ExternalLink, Github } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { DARK_THEME, LIGHT_THEME } from "@/data/theme";
 
@@ -36,6 +36,7 @@ export default function ProjectDetail() {
   const { slug } = useParams<{ slug: string }>();
   const project = useMemo(() => PROJECTS.find(p => p.slug === slug), [slug]);
   const { theme } = useTheme();
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   // Scroll to top when component mounts or slug changes
   useEffect(() => {
@@ -50,6 +51,18 @@ export default function ProjectDetail() {
   }, []);
 
   const glowColor = theme === 'dark' ? DARK_THEME.mouseGlow : LIGHT_THEME.mouseGlow;
+
+  const nextSlide = () => {
+    if (project?.gallery) {
+      setCurrentIndex((prev) => (prev + 1) % project.gallery!.length);
+    }
+  };
+
+  const prevSlide = () => {
+    if (project?.gallery) {
+      setCurrentIndex((prev) => (prev - 1 + project.gallery!.length) % project.gallery!.length);
+    }
+  };
 
 
   if (!project) {
@@ -192,7 +205,7 @@ export default function ProjectDetail() {
                       <div key={idx} className="flex flex-col items-center gap-2">
                         <video
                           src={withBase(section.src)}
-                          className="w-1/3 min-w-[250px] rounded-2xl border border-border bg-bg/50 object-cover"
+                          className="w-1/2 min-w-[250px] max-h-[500px] rounded-2xl border border-border bg-bg/50 object-contain"
                           muted
                           playsInline
                           controls
@@ -211,7 +224,7 @@ export default function ProjectDetail() {
                             <video
                               key={vidIdx}
                               src={withBase(src)}
-                              className="w-[calc(33.333%-1rem)] min-w-[250px] rounded-2xl border border-border bg-bg/50 object-cover"
+                              className="w-[calc(50%-1rem)] min-w-[250px] max-h-[500px] rounded-2xl border border-border bg-bg/50 object-contain"
                               muted
                               playsInline
                               controls
@@ -230,8 +243,26 @@ export default function ProjectDetail() {
                         <img
                           src={withBase(section.src)}
                           alt={section.caption || ''}
-                          className="w-1/2 min-w-[280px] max-w-[500px] rounded-2xl border border-border"
+                          className="w-1/2 min-w-[250px] max-h-[500px] rounded-2xl border border-border object-contain"
                         />
+                        {section.caption && (
+                          <p className="text-sm text-subtext italic">{section.caption}</p>
+                        )}
+                      </div>
+                    );
+                  case 'images':
+                    return (
+                      <div key={idx} className="flex flex-col items-center gap-2">
+                        <div className="flex w-full flex-wrap justify-center gap-4">
+                          {section.items.map((src, imgIdx) => (
+                            <img
+                              key={imgIdx}
+                              src={withBase(src)}
+                              alt={section.caption || ''}
+                              className="w-[calc(50%-1rem)] min-w-[250px] max-h-[500px] rounded-2xl border border-border object-contain"
+                            />
+                          ))}
+                        </div>
                         {section.caption && (
                           <p className="text-sm text-subtext italic">{section.caption}</p>
                         )}
@@ -240,7 +271,7 @@ export default function ProjectDetail() {
                   case 'youtube':
                     return (
                       <div key={idx} className="flex flex-col items-center gap-2">
-                        <div className="aspect-video w-1/2 min-w-[280px] max-w-[500px] overflow-hidden rounded-2xl border border-border">
+                        <div className="aspect-video w-1/2 min-w-[250px] overflow-hidden rounded-2xl border border-border">
                           <iframe
                             className="h-full w-full"
                             src={`https://www.youtube.com/embed/${section.videoId}`}
@@ -262,53 +293,93 @@ export default function ProjectDetail() {
             </div>
           )}
 
-          {/* Gallery (masonry) */}
+          {/* Gallery (carousel) */}
           {project.gallery?.length ? (
-            <div
-              className="mt-8 columns-1 gap-4 sm:columns-2 lg:columns-3 [column-fill:balance]"
-            >
-              {project.gallery.map((g, idx) => {
-                const isVideo = g.endsWith('.mp4') || g.endsWith('.webm') || g.endsWith('.mov');
-                const isImage = g.endsWith('.jpg') || g.endsWith('.jpeg') || g.endsWith('.png') || 
-                               g.endsWith('.gif') || g.endsWith('.webp') || g.endsWith('.svg');
-                const commonClass =
-                  'mb-4 w-full rounded-2xl border border-border bg-bg/50 object-cover hover:opacity-90 transition-opacity';
-                return (
-                  <a
-                    key={idx}
-                    href={withBase(g)}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-block break-inside-avoid"
+            <div className="mt-8 flex justify-center">
+              <div className="w-1/2 min-w-[400px]">
+                <h2 className="mb-4 text-center text-xl font-semibold">Gallery</h2>
+                <div className="relative">
+                <div className="overflow-hidden rounded-2xl border border-border bg-panel">
+                {project.gallery.map((g, idx) => {
+                  const isVideo = g.endsWith('.mp4') || g.endsWith('.webm') || g.endsWith('.mov');
+                  const isImage = g.endsWith('.jpg') || g.endsWith('.jpeg') || g.endsWith('.png') || 
+                                 g.endsWith('.gif') || g.endsWith('.webp') || g.endsWith('.svg');
+                  
+                  return (
+                    <div
+                      key={idx}
+                      className={`transition-opacity duration-300 ${
+                        idx === currentIndex ? 'block' : 'hidden'
+                      }`}
+                    >
+                      {isVideo ? (
+                        <video
+                          src={withBase(g)}
+                          className="w-full h-[400px] sm:h-[500px] md:h-[600px] object-contain bg-bg/50"
+                          muted
+                          playsInline
+                          controls
+                          preload="metadata"
+                        />
+                      ) : isImage ? (
+                        <img
+                          src={withBase(g)}
+                          className="w-full h-[400px] sm:h-[500px] md:h-[600px] object-contain bg-bg/50"
+                          alt={`${project.title} gallery ${idx + 1}`}
+                          loading="lazy"
+                        />
+                      ) : (
+                        <img
+                          src={withBase(g)}
+                          className="w-full h-[400px] sm:h-[500px] md:h-[600px] object-contain bg-bg/50"
+                          alt={`${project.title} gallery ${idx + 1}`}
+                          loading="lazy"
+                        />
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+
+              {/* Navigation buttons */}
+              {project.gallery.length > 1 && (
+                <>
+                  <button
+                    onClick={prevSlide}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 rounded-full border border-border bg-panel p-2 text-text transition-colors hover:bg-bg hover:text-accent-purple"
+                    aria-label="Previous slide"
                   >
-                    {isVideo ? (
-                      <video
-                        src={withBase(g)}
-                        className={commonClass}
-                        muted
-                        playsInline
-                        controls
-                        preload="metadata"
-                      />
-                    ) : isImage ? (
-                      <img
-                        src={withBase(g)}
-                        className={commonClass}
-                        alt={`${project.title} gallery ${idx + 1}`}
-                        loading="lazy"
-                      />
-                    ) : (
-                      // Fallback for unknown file types - treat as image
-                      <img
-                        src={withBase(g)}
-                        className={commonClass}
-                        alt={`${project.title} gallery ${idx + 1}`}
-                        loading="lazy"
-                      />
-                    )}
-                  </a>
-                );
-              })}
+                    <ChevronLeft className="size-6" />
+                  </button>
+                  <button
+                    onClick={nextSlide}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 rounded-full border border-border bg-panel p-2 text-text transition-colors hover:bg-bg hover:text-accent-purple"
+                    aria-label="Next slide"
+                  >
+                    <ChevronRight className="size-6" />
+                  </button>
+                </>
+              )}
+
+              {/* Indicators */}
+              {project.gallery.length > 1 && (
+                <div className="mt-4 flex justify-center gap-2">
+                  {project.gallery.map((_, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setCurrentIndex(idx)}
+                      className={`h-2 rounded-full transition-all ${
+                        idx === currentIndex
+                          ? 'w-8 bg-accent-purple'
+                          : 'w-2 bg-border hover:bg-subtext'
+                      }`}
+                      aria-label={`Go to slide ${idx + 1}`}
+                    />
+                  ))}
+                </div>
+              )}
+              </div>
+              </div>
             </div>
           ) : null}
         </div>
