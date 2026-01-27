@@ -1,3 +1,10 @@
+export type ContentSection =
+  | { type: 'text'; content: string }
+  | { type: 'video'; src: string; caption?: string }
+  | { type: 'videos'; items: string[]; caption?: string }
+  | { type: 'image'; src: string; caption?: string }
+  | { type: 'youtube'; videoId: string; caption?: string };
+
 export type Project = {
   slug: string;
   title: string;
@@ -11,7 +18,8 @@ export type Project = {
   links?: { link?: string; code?: string };
   area?: "Robotics" | "Embedded" | "AI/ML" | "Other";
   status?: 'Active' | 'Complete';
-  body?: string;             
+  body?: string;
+  sections?: ContentSection[];
   gallery?: string[];        
 };
 
@@ -100,15 +108,39 @@ export const PROJECTS: Project[] = [
     previewVideo: "media/turtlebot3/turtlebot3_preview.mp4",
     mainVideo: "media/turtlebot3/turtlebot3_preview.mp4",
     links: { code: "https://github.com/ojas-mediratta/turtlebot3-ros2" },
-    body: `This project was an ongoing exploration of perception, localization, and control using ROS2 on the TurtleBot3 platform. It taught me the fundamentals of the ROS 2 ecosystem in a practical, hands-on way as opposed to working exclusively in sim.
+    sections: [
+      {
+        type: 'text',
+        content: `This project was an ongoing exploration of perception, localization, and control using ROS2 on the TurtleBot3 platform. It taught me the fundamentals of the ROS 2 ecosystem in a practical, hands-on way as opposed to working exclusively in sim.
 
-    I began with a simple perception pipeline that used OpenCV to detect and track colored objects (all written in Python). From there, I tied everything into ROS 2 topics so the robot could publish processed images and target coordinates in real time. Once that worked, I built a cascaded PID controller that fused camera and LIDAR inputs, which allowed the robot to chase moving targets while keeping a safe buffer of distance and maintaining alignment.
-
-    After that, I shifted toward navigation. I built a Go-to-Goal controller that blended odometry and LIDAR sensing for reactive obstacle avoidance. The robot computed velocity commands based on real-time obstacle vectors and could move toward arbitrary goal positions while steering cleanly around whatever got in the way. This part of the project taught me a lot about low-level control and sensor fusion.
-
-    The next phase focused on full mapping, localization, and global navigation with the ROS 2 Nav2 stack. I set up AMCL for reliable pose estimation, and tuned costmap and controller parameters until the robot could handle narrow hallways without drifting or oscillating. To automate longer missions, I wrote a ROS 2 node that publishes sequential waypoints to the /goal_pose topic so the robot can traverse a full route on its own. I tested everything in Gazebo's maze world and then transferred it to the physical TurtleBot3, where it performed well.
-
-    The final project brought everything together in a maze navigation task that required real-time sign classification using computer vision. The robot had to autonomously navigate through a maze while identifying and responding to visual commands posted at intersections. We experimented with several machine learning approaches for image classification, testing different models to balance accuracy with computational constraints. After evaluating options including deep learning architectures (just for fun, these were way too big to run on our limited turtlebot3 as we learned), we settled on a Support Vector Machine (SVM) classifier. The SVM proved to be lightweight enough to run directly onboard the TurtleBot3 while still delivering excellent classification performance. We ended up completing the course near perfectly, with the exception of one misclassification`,
+        I began with a simple perception pipeline that used OpenCV to detect and track colored objects (all written in Python). From there, I tied everything into ROS 2 topics so the robot could publish processed images and target coordinates in real time. Once that worked, I built a cascaded PID controller that fused camera and LIDAR inputs, which allowed the robot to chase moving targets while keeping a safe buffer of distance and maintaining alignment.`
+      },
+      {
+        type: 'videos',
+        items: ['media/turtlebot3/turtlebot3_1.mp4', 'media/turtlebot3/turtlebot3_3.mp4'],
+        caption: 'OpenCV tracking demo with port to ROS2'
+      },
+      {
+        type: 'text',
+        content: `After that, I shifted toward navigation. I built a Go-to-Goal controller that blended odometry and LIDAR sensing for reactive obstacle avoidance. The robot computed velocity commands based on real-time obstacle vectors and could move toward arbitrary goal positions while steering cleanly around whatever got in the way. This part of the project taught me a lot about low-level control and sensor fusion.`
+      },
+      {
+        type: 'video',
+        src: 'media/turtlebot3/turtlebot3_4.mp4',
+        caption: 'Waypoint navigation with obstacle avoidance'
+      },
+      {
+        type: 'text',
+        content: `The next phase focused on full mapping, localization, and global navigation with the ROS 2 Nav2 stack. I set up AMCL for reliable pose estimation, and tuned costmap and controller parameters until the robot could handle narrow hallways without drifting or oscillating. To automate longer missions, I wrote a ROS 2 node that publishes sequential waypoints to the /goal_pose topic so the robot can traverse a full route on its own. I tested everything in Gazebo's maze world and then transferred it to the physical TurtleBot3, where it performed well.
+        
+        The final project brought everything together in a maze navigation task that required real-time sign classification using computer vision. The robot had to autonomously navigate through a maze while identifying and responding to visual commands posted at intersections. We experimented with several machine learning approaches for image classification, testing different models to balance accuracy with computational constraints. After evaluating options including deep learning architectures (just for fun, these were way too big to run on our limited turtlebot3 as we learned), we settled on a Support Vector Machine (SVM) classifier. The SVM proved to be lightweight enough to run directly onboard the TurtleBot3 while still delivering excellent classification performance. We ended up completing the course near perfectly, with the exception of one misclassification.`
+      },
+      {
+        type: 'videos',
+        items: ['media/turtlebot3/turtlebot3_5.mp4', 'media/turtlebot3/turtlebot3_preview.mp4'],
+        caption: 'Localization and sign-based maze navigation demos'
+      }
+    ],
     gallery: [
       "media/turtlebot3/turtlebot3_1.mp4",
       "media/turtlebot3/turtlebot3_2.mp4",

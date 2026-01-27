@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import Container from "@/components/Container";
 import Section from "@/components/Section";
 import Gallery from "@/components/Gallery";
-import { PROJECTS } from "@/data/projects";
+import { PROJECTS, ContentSection } from "@/data/projects";
 import { ArrowLeft, ExternalLink, Github } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { DARK_THEME, LIGHT_THEME } from "@/data/theme";
@@ -169,10 +169,96 @@ export default function ProjectDetail() {
             )}
           </div>
 
-          {/* Body */}
+          {/* Body (legacy) */}
           {project.body && (
-            <div className="prose prose-invert mt-6 max-w-none whitespace-pre-line">
+            <div className="mt-6 max-w-none whitespace-pre-line text-text">
               {project.body}
+            </div>
+          )}
+
+          {/* Sections (new structured content) */}
+          {project.sections && project.sections.length > 0 && (
+            <div className="mt-6 space-y-6">
+              {project.sections.map((section: ContentSection, idx: number) => {
+                switch (section.type) {
+                  case 'text':
+                    return (
+                      <div key={idx} className="whitespace-pre-line text-text leading-relaxed">
+                        {section.content}
+                      </div>
+                    );
+                  case 'video':
+                    return (
+                      <div key={idx} className="flex flex-col items-center gap-2">
+                        <video
+                          src={withBase(section.src)}
+                          className="w-1/3 min-w-[250px] rounded-2xl border border-border bg-bg/50 object-cover"
+                          muted
+                          playsInline
+                          controls
+                          preload="metadata"
+                        />
+                        {section.caption && (
+                          <p className="text-sm text-subtext italic">{section.caption}</p>
+                        )}
+                      </div>
+                    );
+                  case 'videos':
+                    return (
+                      <div key={idx} className="flex flex-col items-center gap-2">
+                        <div className="flex w-full flex-wrap justify-center gap-4">
+                          {section.items.map((src, vidIdx) => (
+                            <video
+                              key={vidIdx}
+                              src={withBase(src)}
+                              className="w-[calc(33.333%-1rem)] min-w-[250px] rounded-2xl border border-border bg-bg/50 object-cover"
+                              muted
+                              playsInline
+                              controls
+                              preload="metadata"
+                            />
+                          ))}
+                        </div>
+                        {section.caption && (
+                          <p className="text-sm text-subtext italic">{section.caption}</p>
+                        )}
+                      </div>
+                    );
+                  case 'image':
+                    return (
+                      <div key={idx} className="flex flex-col items-center gap-2">
+                        <img
+                          src={withBase(section.src)}
+                          alt={section.caption || ''}
+                          className="w-1/2 min-w-[280px] max-w-[500px] rounded-2xl border border-border"
+                        />
+                        {section.caption && (
+                          <p className="text-sm text-subtext italic">{section.caption}</p>
+                        )}
+                      </div>
+                    );
+                  case 'youtube':
+                    return (
+                      <div key={idx} className="flex flex-col items-center gap-2">
+                        <div className="aspect-video w-1/2 min-w-[280px] max-w-[500px] overflow-hidden rounded-2xl border border-border">
+                          <iframe
+                            className="h-full w-full"
+                            src={`https://www.youtube.com/embed/${section.videoId}`}
+                            title="YouTube video"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                          />
+                        </div>
+                        {section.caption && (
+                          <p className="text-sm text-subtext italic">{section.caption}</p>
+                        )}
+                      </div>
+                    );
+                  default:
+                    return null;
+                }
+              })}
             </div>
           )}
 
