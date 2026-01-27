@@ -15,14 +15,14 @@ const darkButtonColors = [
   { border: "#59c2ff", text: "#59c2ff" }, // blue
 ];
 
-// Color mapping for buttons - Light theme (Cloud)
+// Color mapping for buttons - Light theme (Dark Olive Green)
 const lightButtonColors = [
-  { border: "#00b7bd", text: "#00b7bd" }, // cyan/blue
-  { border: "#7d57c2", text: "#7d57c2" }, // purple  
-  { border: "#678f03", text: "#678f03" }, // green
-  { border: "#cc6d00", text: "#cc6d00" }, // orange/yellow
-  { border: "#d0372d", text: "#d0372d" }, // red
-  { border: "#008abd", text: "#008abd" }, // blue
+  { border: "#556B2F", text: "#556B2F" }, // olive green
+  { border: "#556B2F", text: "#556B2F" }, // olive green  
+  { border: "#556B2F", text: "#556B2F" }, // olive green
+  { border: "#556B2F", text: "#556B2F" }, // olive green
+  { border: "#556B2F", text: "#556B2F" }, // olive green
+  { border: "#556B2F", text: "#556B2F" }, // olive green
 ];
 
 export default function Navbar() {

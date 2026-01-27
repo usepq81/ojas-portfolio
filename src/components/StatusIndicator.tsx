@@ -15,12 +15,12 @@ export default function StatusIndicator({ label, className = "" }: StatusIndicat
       <span className="relative inline-flex h-2.5 w-2.5">
         {/* bright core */}
         <span
-          className="absolute inset-0 rounded-full bg-emerald-400 [.light_&]:bg-accent-cyan opacity-100 shadow-[0_0_12px_3px_rgba(16,185,129,0.9)] [.light_&]:shadow-[0_0_12px_3px_rgba(0,183,189,0.9)]"
+          className="absolute inset-0 rounded-full bg-emerald-400 [.light_&]:bg-accent-cyan opacity-100 shadow-[0_0_12px_3px_rgba(16,185,129,0.9)] [.light_&]:shadow-[0_0_12px_3px_rgba(181,212,130,0.9)]"
           aria-hidden
         />
         {/* soft halo with enhanced pulse */}
         <span
-          className="absolute inset-0 rounded-full bg-emerald-400/80 [.light_&]:bg-[#00b7bd]/80 blur-[4px] animate-[pulse_1.5s_ease-in-out_infinite]"
+          className="absolute inset-0 rounded-full bg-emerald-400/80 [.light_&]:bg-[#B5D482]/80 blur-[4px] animate-[pulse_1.5s_ease-in-out_infinite]"
           aria-hidden
         />
       </span>
