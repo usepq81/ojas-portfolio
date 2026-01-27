@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { THEME } from "@/data/theme";
 
 interface LoadingScreenProps {
   progress: number;
@@ -49,8 +48,7 @@ export default function LoadingScreen({ progress, loadedAssets, totalAssets }: L
 
   return (
     <div 
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center"
-      style={{ backgroundColor: THEME.bg }}
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-bg"
     >
       {/* Loading spinner */}
       <div className="mb-8">
