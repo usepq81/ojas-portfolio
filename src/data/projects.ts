@@ -80,7 +80,7 @@ export const PROJECTS: Project[] = [
   },
   // {
   //   slug: "advanced-mobile-robotics",
-  //   title: "Advanced Mobile Robotics: Estimation, SLAM, and LiDAR–Inertial Odometry",
+  //   title: "Advanced Mobile Robotics: Estimation, SLAM, and Control",
   //   blurb: "A sequence of robotics implementations spanning robot mobility, optimization, estimation, and control for swimming, land-roaming, and flying robots.",
   //   tags: ["Robotics", "Python", "GTSAM", "Webots", "Control", "SLAM"],
   //   area: "Robotics",
@@ -233,13 +233,11 @@ export const PROJECTS: Project[] = [
     previewVideo: "media/hackGT12/dose_preview.mp4",
     youtubeVideo: "8https://youtu.be/j7cSnyq9Vn8?si=D-a5kVKJLNQyEynK",
     links: { code: "https://github.com/dawsonp2003/HackGT12-Dose", link: "https://devpost.com/software/dose-ebmo9z" },
-    body: `Dose was my HackGT12 Hackathon project. This was my first ever hackathon, and I loved it. Over the course of 36 intense hours, my team and I brainstormed, built, and debugged our way through sleepless nights, sticky notes, and too many energy drinks to count. HackGT12 brought together 900+ participants, and being part of that energy—watching the room buzz with ideas while racing the clock to bring ours to life—was unforgettable.  
-
-    We set out to tackle a problem that’s huge but often invisible: medication non-adherence.  
-
-    Medication non-adherence happens when patients don’t take their medication at the prescribed time or in the prescribed way. It might sound simple, but the impact is massive—studies estimate it costs the U.S. healthcare system $100–300 billion every year in avoidable direct costs. Missed doses, overdoses, and inconsistent adherence don’t just create complications for patients, but also ripple outward into failed treatments, unnecessary hospitalizations, and unreliable results in drug trial research.  
-
-    That’s where Dose comes in. We designed it as a smart pill bottle that combines embedded sensing with rich data delivery. For patients, it makes adherence straightforward. For researchers and clinicians, it provides the high-quality data needed to truly understand whether treatments are working as intended. Building the hardware, software, and dashboard in such a short time was equal parts challenging and exhilarating—but seeing our prototype come together at the expo made every late-night bug fix worth it.`,
+    sections: [
+      { type: 'text', content: `Dose was my HackGT12 Hackathon project. This was my first ever hackathon, and I loved it. Over the course of 36 intense hours, my team and I brainstormed, built, and debugged our way through sleepless nights, sticky notes, and too many energy drinks to count. HackGT12 brought together 900+ participants, and being part of that energy—watching the room buzz with ideas while racing the clock to bring ours to life—was unforgettable. We set out to tackle a problem that’s huge but often invisible: medication non-adherence.` },
+      { type: 'text', content: `Medication non-adherence happens when patients don’t take their medication at the prescribed time or in the prescribed way. It might sound simple, but the impact is massive—studies estimate it costs the U.S. healthcare system $100–300 billion every year in avoidable direct costs. Missed doses, overdoses, and inconsistent adherence don’t just create complications for patients, but also ripple outward into failed treatments, unnecessary hospitalizations, and unreliable results in drug trial research.` },
+      { type: 'text', content: `That’s where Dose comes in. We designed it as a smart pill bottle that combines embedded sensing with rich data delivery. For patients, it makes adherence straightforward. For researchers and clinicians, it provides the high-quality data needed to truly understand whether treatments are working as intended. Building the hardware, software, and dashboard in such a short time was equal parts challenging and exhilarating—but seeing our prototype come together at the expo made every late-night bug fix worth it.` }, 
+    ],
     gallery: [
       "media/hackGT12/dose_1.jpeg",
       "media/hackGT12/dose_2.jpeg",
@@ -267,15 +265,13 @@ export const PROJECTS: Project[] = [
     youtubeVideo: "https://youtu.be/AiMx3mfucmc",
     previewVideo: "media/ai-atl25/lucid_preview.mp4",
     links: { code: "https://github.com/amukker15/GTAI", link: "https://devpost.com/software/lucid-nijx3r"},
-    body: `Lucid was my second ever hackathon project, and somehow, we won again (this time in a sponsor track for Snowflake AI Cloud systems). I’d just come off my first win a month earlier and decided to ride the wave.
-
-    We built Lucid at the AI ATL Hackathon: a computer vision system that monitors truck driver fatigue in real time. The goal was simple; catch signs of drowsiness like blinking, yawning, or nodding off before they become dangerous. The data runs through a Snowflake backend and updates a live dashboard that shows each driver’s fatigue levels across a fleet.
-
-    I focused mostly on the physical and frontend sides of the project. I designed and printed the demo hardware, an enclosure for the mobile phone which included the cameras and sensors, which took a few rounds of failed prints and redesigns before it came together cleanly. On the frontend, I worked on the React dashboard and the mobile port, making sure the visuals were clean, responsive, and intuitive.
-
-    I also jumped in on some backend work, helping connect the API to Snowflake and shape how the data was stored and streamed to the frontend. It was a lot of small but essential details: data schemas, validation, debugging.
-
-    By the end of the weekend, we had a full working demo; hardware, dashboard, backend, everything, and it actually felt cohesive. The prototype made it tangible, and the UI made it look finished. For a 36-hour build, it came together in a way that surprised even us.`,
+    sections: [
+      { type: 'text', content: `Lucid was my second ever hackathon project, and somehow, we won again (this time in a sponsor track for Snowflake AI Cloud systems). I’d just come off my first win a month earlier and decided to ride the wave.` },
+      { type: 'text', content: `We built Lucid at the AI ATL Hackathon: a computer vision system that monitors truck driver fatigue in real time. The goal was simple; catch signs of drowsiness like blinking, yawning, or nodding off before they become dangerous. The data runs through a Snowflake backend and updates a live dashboard that shows each driver’s fatigue levels across a fleet.` },
+      { type: 'text', content: `I focused mostly on the physical and frontend sides of the project. I designed and printed the demo hardware, an enclosure for the mobile phone which included the cameras and sensors, which took a few rounds of failed prints and redesigns before it came together cleanly. On the frontend, I worked on the React dashboard and the mobile port, making sure the visuals were clean, responsive, and intuitive.` },
+      { type: 'text', content: `I also jumped in on some backend work, helping connect the API to Snowflake and shape how the data was stored and streamed to the frontend. It was a lot of small but essential details: data schemas, validation, debugging.` },
+      { type: 'text', content: `By the end of the weekend, we had a full working demo; hardware, dashboard, backend, everything, and it actually felt cohesive. The prototype made it tangible, and the UI made it look finished. For a 36-hour build, it came together in a way that surprised even us.` },
+    ],
     gallery: [
       "media/ai-atl25/lucid_1.png",
       "media/ai-atl25/lucid_2.jpeg",
