@@ -4,25 +4,26 @@ import Brandmark from "@/components/Brandmark";
 import { useScrollSpy } from "@/components/useScrollSpy";
 import { Menu, X, Github, Linkedin, Instagram, Sun, Moon } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
+import { DARK_THEME, LIGHT_THEME } from "@/data/theme";
 
 // Color mapping for buttons - Dark theme (Ayu Mirage)
 const darkButtonColors = [
-  { border: "#95e6cb", text: "#95e6cb" }, // cyan
-  { border: "#d4bfff", text: "#d4bfff" }, // purple  
-  { border: "#bae67e", text: "#bae67e" }, // green
-  { border: "#ffcc66", text: "#ffcc66" }, // yellow
-  { border: "#f28779", text: "#f28779" }, // orange
-  { border: "#59c2ff", text: "#59c2ff" }, // blue
+  { border: DARK_THEME.cyan, text: DARK_THEME.cyan },
+  { border: DARK_THEME.purple, text: DARK_THEME.purple },
+  { border: DARK_THEME.green, text: DARK_THEME.green },
+  { border: DARK_THEME.yellow, text: DARK_THEME.yellow },
+  { border: DARK_THEME.red, text: DARK_THEME.red },
+  { border: DARK_THEME.blue, text: DARK_THEME.blue },
 ];
 
-// Color mapping for buttons - Light theme (Dark Olive Green)
+// Color mapping for buttons - Light theme (Single Olive Green)
 const lightButtonColors = [
-  { border: "#556B2F", text: "#556B2F" }, // olive green
-  { border: "#556B2F", text: "#556B2F" }, // olive green  
-  { border: "#556B2F", text: "#556B2F" }, // olive green
-  { border: "#556B2F", text: "#556B2F" }, // olive green
-  { border: "#556B2F", text: "#556B2F" }, // olive green
-  { border: "#556B2F", text: "#556B2F" }, // olive green
+  { border: LIGHT_THEME.cyan, text: LIGHT_THEME.cyan },
+  { border: LIGHT_THEME.purple, text: LIGHT_THEME.purple },
+  { border: LIGHT_THEME.green, text: LIGHT_THEME.green },
+  { border: LIGHT_THEME.yellow, text: LIGHT_THEME.yellow },
+  { border: LIGHT_THEME.red, text: LIGHT_THEME.red },
+  { border: LIGHT_THEME.blue, text: LIGHT_THEME.blue },
 ];
 
 export default function Navbar() {
