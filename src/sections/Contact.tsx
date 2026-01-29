@@ -2,7 +2,7 @@ import React from "react";
 import Section from "@/components/Section";
 import Container from "@/components/Container";
 import { Mail, Phone, MapPin, Github, Linkedin } from "lucide-react";
-import { PROFILE } from "@/data/links";
+import { PROFILE } from "@/data/about";
 
 export default function Contact() {
   return (

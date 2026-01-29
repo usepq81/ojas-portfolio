@@ -15,3 +15,11 @@ export const PROFILE = {
         avatar: 'assets/avatar.jpg', 
     },
 }
+
+export const STATUS_MESSAGES = [
+    "conference papers.",
+    "robots.",
+    "tactile sensing.",
+    "grad ML.",
+    "class projects.",
+];

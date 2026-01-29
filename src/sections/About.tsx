@@ -5,15 +5,8 @@ import Container from "@/components/Container";
 import TypingEffect from "@/components/TypingEffect";
 import avatarFile from "@/assets/avatar.jpg";
 import { Mail, Phone, MapPin, Github, Linkedin, Download } from "lucide-react";
-import { PROFILE } from "@/data/links";
+import { PROFILE, STATUS_MESSAGES } from "@/data/about";
 
-
-const STATUS_MESSAGES = [
-  "conference papers.",
-  "robots.",
-  "tactile sensing.",
-  "grad ML.",
-];
 
 const resumeHref = `${import.meta.env.BASE_URL}resume.pdf`;
 

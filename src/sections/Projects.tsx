@@ -25,7 +25,13 @@ export default function Projects() {
 
   const items = useMemo(() => {
     if (activeFilter === 'All') return PROJECTS
-    return PROJECTS.filter((p) => p.area === activeFilter)
+    return PROJECTS.filter((p) => {
+      if (!p.area) return false
+      if (Array.isArray(p.area)) {
+        return p.area.includes(activeFilter)
+      }
+      return p.area === activeFilter
+    })
   }, [activeFilter])
 
   const displayedItems = useMemo(() => {

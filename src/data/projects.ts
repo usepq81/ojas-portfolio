@@ -6,6 +6,8 @@ export type ContentSection =
   | { type: 'images'; items: string[]; caption?: string }
   | { type: 'youtube'; videoId: string; caption?: string };
 
+export type ProjectArea = "Robotics" | "Embedded" | "AI/ML" | "Other";
+
 export type Project = {
   slug: string;
   title: string;
@@ -17,7 +19,7 @@ export type Project = {
   youtubeVideo?: string;
   previewGif?: string;
   links?: { link?: string; code?: string };
-  area?: "Robotics" | "Embedded" | "AI/ML" | "Other";
+  area?: ProjectArea | ProjectArea[];
   status?: 'Active' | 'Complete';
   body?: string;
   sections?: ContentSection[];
@@ -79,6 +81,24 @@ export const PROJECTS: Project[] = [
     gallery: []
   },
   // {
+  //   slug: "slam-craft",
+  //   title: "SLAMCraft: Visual State Estimation from Minecraft Gameplay",
+  //   blurb: "Using Minecraft as a controlled simulation to study learning-based visual odometry, pose estimation, and SLAM from raw vision data.",
+  //   tags: ["AI/ML", "Robotics", "Python", "Pytorch", "Computer Vision", "SLAM"],
+  //   area: ["AI/ML", "Robotics"],
+  //   status: "Active",
+  //   thumb: "media/slam-craft/slam-craft_thumb.jpg",
+  //   previewVideo: "",
+  //   mainVideo: "",
+  //   links: { code: "" },
+  //   sections: [
+  //     { type: 'text', content: `This project is currently in the planning stage.` },
+  //     { type: 'text', content: `SLAMCraft is a machine learning course project that combines unsupervised representation learning with supervised regression to study vision-based motion estimation. Minecraft gameplay data will be used as a synthetic dataset, pairing video frames with ground-truth pose information for training and evaluation.` },
+  //     { type: 'text', content: `Further details, experiments, and results will be added as the project is implemented.` },
+  //   ],
+  //   gallery: []
+  // },
+  // {
   //   slug: "advanced-mobile-robotics",
   //   title: "Advanced Mobile Robotics: Estimation, SLAM, and Control",
   //   blurb: "A sequence of robotics implementations spanning robot mobility, optimization, estimation, and control for swimming, land-roaming, and flying robots.",
@@ -89,11 +109,11 @@ export const PROJECTS: Project[] = [
   //   previewVideo: "",
   //   mainVideo: "",
   //   links: { code: "" },
-  //   body: `This project page tracks my work in Georgia Tech’s Advanced Mobile Robotics course. So far, the focus has been on rigid-body kinematics, coordinate frames, and transformations, with implementations tested in Webots simulation.
-
-  //   We are using GTSAM (in Python) to build intuition around factor-graph–based estimation, which will later expand into filtering, SLAM, and LiDAR–inertial odometry as the course progresses.
-
-  //   [In progress: more details coming soon.]`,
+  //   sections: [
+  //     { type: 'text', content: `This project page tracks my work in Georgia Tech’s Advanced Mobile Robotics course. So far, the focus has been on rigid-body kinematics, coordinate frames, and transformations, with implementations tested in Webots simulation.` },
+  //     { type: 'text', content: `We are using GTSAM (in Python) to build intuition around factor-graph–based estimation, which will later expand into filtering, SLAM, and LiDAR–inertial odometry as the course progresses.` },
+  //     { type: 'text', content: `[In progress: more details coming soon.]` },
+  //   ],
   //   gallery: []
   // },
   {
