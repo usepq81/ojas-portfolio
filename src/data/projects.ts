@@ -65,7 +65,7 @@ export const PROJECTS: Project[] = [
   {
     slug: "tactile-sensing",
     title: "Tactile Sensing for Robotic Manipulation and Collaborative Tasks",
-    blurb: "Research and development of a custom gripper and integration of tactile sensing technology for collaborative transport tasks.",
+    blurb: "Research in tactile sensing and reinforcement learning with dextrous manipulators for human-robot and robot-robot collaborative tasks.",
     tags: ["Robotics", "Isaac Sim", "Sensors", "Manipulation", "Controls", "Fusion360"],
     area: "Robotics",
     status: "Active",
@@ -75,7 +75,7 @@ export const PROJECTS: Project[] = [
     links: { code: "" },
     sections: [
       { type: 'text', content: `I am designing a modular gripper for a KUKA manipulator intended to accept custom flexible tactile sensors I am developing, inspired by 3D‑ViTac (https://binghao-huang.github.io/3D-ViTac/). This work is ongoing at the LIDAR Lab, Georgia Tech.` },
-      { type: 'text', content: `I'm responsible for CAD and prototype fabrication of the gripper with sensor layout and fabrication for conformal, flexible arrays. I am also working on real2sim integration in NVIDIA IssacSim, including tactile sensor simulation and control strategies for collaborative transport tasks.` },
+      { type: 'text', content: `I'm responsible for CAD and prototype fabrication of the gripper with sensor layout and fabrication for conformal, flexible arrays. I am also working on real to sim integration in NVIDIA IssacSim, including tactile sensor simulation and control strategies for collaborative transport tasks.` },
       { type: 'text', content: `The second gripper I am working on engineering tasks for is the Inspire hand from Inspire robotics. This hand has built-in tactile sensing, and I am working on real to sim in Issac Sim for this hand as well.` }
     ],
     gallery: []
