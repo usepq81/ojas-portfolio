@@ -11,6 +11,47 @@ import { DARK_THEME, LIGHT_THEME } from "@/data/theme";
 const withBase = (path?: string) =>
   path ? `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}` : undefined;
 
+// Helper function to parse markdown links in text
+const parseMarkdownLinks = (text: string) => {
+  const parts: (string | JSX.Element)[] = [];
+  let lastIndex = 0;
+  
+  // Match markdown links: [text](url)
+  const linkRegex = /\[([^\]]+)\]\(([^)]+)\)/g;
+  let match;
+  
+  while ((match = linkRegex.exec(text)) !== null) {
+    // Add text before the link
+    if (match.index > lastIndex) {
+      parts.push(text.substring(lastIndex, match.index));
+    }
+    
+    // Add the link
+    const linkText = match[1];
+    const url = match[2];
+    parts.push(
+      <a
+        key={match.index}
+        href={url}
+        target="_blank"
+        rel="noreferrer"
+        className="text-accent-blue hover:text-accent-purple underline"
+      >
+        {linkText}
+      </a>
+    );
+    
+    lastIndex = match.index + match[0].length;
+  }
+  
+  // Add remaining text
+  if (lastIndex < text.length) {
+    parts.push(text.substring(lastIndex));
+  }
+  
+  return parts.length > 0 ? parts : [text];
+};
+
 // Helper function to extract YouTube video ID from URL or return ID if already provided
 const getYouTubeVideoId = (input: string): string => {
   // If it's already a video ID (11 characters, alphanumeric + hyphens/underscores)
@@ -197,7 +238,7 @@ export default function ProjectDetail() {
                   case 'text':
                     return (
                       <div key={idx} className="whitespace-pre-line text-text leading-relaxed">
-                        {section.content}
+                        {parseMarkdownLinks(section.content)}
                       </div>
                     );
                   case 'video':

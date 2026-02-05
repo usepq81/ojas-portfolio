@@ -39,8 +39,9 @@ export const PROJECTS: Project[] = [
     mainVideo: "media/blip-auv/blip_main.mp4",
     links: { link: "https://www.linkedin.com/posts/ojas-mediratta_robotics-embedded-signalprocessing-activity-7358290478351478784-0Afr?utm_source=share&utm_medium=member_desktop&rcm=ACoAADdTxJgB6uIFgkQecw_eTHt3ywpT-XIfTt8" },
     sections: [
-      { type: 'text', content: `BLIP is an autonomous and remotely-operated underwater vehicle built for dolphin communication research. It started as a collaboration between the Wild Dolphin Project and Georgia Tech’s Contextual Computing Group, and it has grown into a platform that lets us study how dolphins respond to interactive acoustic signals in the wild. The goal was to build a robot that can listen, interpret, and react to dolphin whistles in real time.` },
-      { type: 'text', content: `The project has been through more than 15 pool trials and several ocean deployments, with each consecutive deployment giving us more data and insights. Some important considerations were that BLIP needed to be repairable in the field, pressure tolerant, and easy to deploy by one person, so we spent a lot of time on the design with those constraints.` },
+      { type: 'text', content: `BLIP is an autonomous and remotely-operated underwater vehicle built for dolphin communication research. It started as a collaboration between the Wild Dolphin Project and Georgia Tech’s Contextual Computing Group, and we've built it out into a platform that lets us study how dolphins respond to interactive acoustic signals in the wild. There's a lot of research work with dolphins that involves modeling behaviors and associating them with specific whistle sounds that the dolphins can replicate. The goal is to establish a 'shared vocabulary' in a sense, so that we can eventually engage in two-way communication.` },
+      { type: 'text', content: `Of course, one of the important aspects to communicating is not just being able to make sounds, but to also understand sounds that are made by others. This is where we used deep-learning to classify and recognize different types of dolphin vocalizations in real time. Our classifier is running on the robot and is able to turn dolphin vocalizations into behaviors and responses that are meaningful to the dolphins, and very quickly. The foundational work on developing this classifier and it's associated hardware (known as the CHAT system) was done at Georgia Tech well before my time and is part of a collaboration with Google. You can see more at [DolphinGemma](https://blog.google/innovation-and-ai/products/dolphingemma/).` },
+      { type: 'text', content: `BLIP has been through more than 15 pool trials and several ocean deployments, with each consecutive deployment giving us more data and insights. Some important considerations were that BLIP needed to be repairable in the field, pressure tolerant, and easy to deploy by one person, so we spent a lot of time on the design with those constraints.` },
       { type: 'video', src: 'media/blip-auv/blip_1.mp4', caption: 'Early in-water trials and pool tests' },
       { type: 'text', content: `I owned the entire software, firmware, and most of the electrical integration of the system. I built some software tools to make using the robot easier for the non-technical marine biologists on the team, like the pipeline for real-time parameter tuning that they relied on during deployments. I implemented the OTA update system that let us push fixes without opening the robot, and developed the live web telemetry site that streamed robot state and acoustic detections in real time. These tools ended up being very important during field operations.` },
       { type: 'video', src: 'media/blip-auv/blip_4.mp4', caption: 'Tone recognition test' },
@@ -74,9 +75,9 @@ export const PROJECTS: Project[] = [
     mainVideo: "",
     links: { code: "" },
     sections: [
-      { type: 'text', content: `I am designing a modular gripper for a KUKA manipulator intended to accept custom flexible tactile sensors I am developing, inspired by 3D‑ViTac (https://binghao-huang.github.io/3D-ViTac/). This work is ongoing at the LIDAR Lab, Georgia Tech.` },
-      { type: 'text', content: `I'm responsible for CAD and prototype fabrication of the gripper with sensor layout and fabrication for conformal, flexible arrays. I am also working on real to sim integration in NVIDIA IssacSim, including tactile sensor simulation and control strategies for collaborative transport tasks.` },
-      { type: 'text', content: `The second gripper I am working on engineering tasks for is the Inspire hand from Inspire robotics. This hand has built-in tactile sensing, and I am working on real to sim in Issac Sim for this hand as well.` }
+      { type: 'text', content: `I'm designing a modular gripper for a KUKA manipulator intended to accept custom flexible tactile sensors I am developing, inspired by [3D‑ViTac](https://binghao-huang.github.io/3D-ViTac/). This work is ongoing at the LIDAR Lab, Georgia Tech.` },
+      { type: 'text', content: `I'm responsible for CAD and prototype fabrication of the gripper with sensor layout and fabrication for flexible arrays. I am also working on real to sim integration in NVIDIA IssacSim.` },
+      { type: 'text', content: `The second gripper I am working on engineering tasks for is the Inspire hand from Inspire robotics. This hand has built-in tactile sensing, and I am working on real to sim in Issac Sim for this hand too.` }
     ],
     gallery: []
   },
@@ -98,24 +99,26 @@ export const PROJECTS: Project[] = [
   //   ],
   //   gallery: []
   // },
-  // {
-  //   slug: "advanced-mobile-robotics",
-  //   title: "Advanced Mobile Robotics: Estimation, SLAM, and Control",
-  //   blurb: "A sequence of robotics implementations spanning robot mobility, optimization, estimation, and control for swimming, land-roaming, and flying robots.",
-  //   tags: ["Robotics", "Python", "GTSAM", "Webots", "Control", "SLAM"],
-  //   area: "Robotics",
-  //   status: "Active",
-  //   thumb: "media/advanced-mobile-robotics/advanced-mobile-robotics_thumb.jpg",
-  //   previewVideo: "",
-  //   mainVideo: "",
-  //   links: { code: "" },
-  //   sections: [
-  //     { type: 'text', content: `This project page tracks my work in Georgia Tech’s Advanced Mobile Robotics course. So far, the focus has been on rigid-body kinematics, coordinate frames, and transformations, with implementations tested in Webots simulation.` },
-  //     { type: 'text', content: `We are using GTSAM (in Python) to build intuition around factor-graph–based estimation, which will later expand into filtering, SLAM, and LiDAR–inertial odometry as the course progresses.` },
-  //     { type: 'text', content: `[In progress: more details coming soon.]` },
-  //   ],
-  //   gallery: []
-  // },
+  {
+    slug: "advanced-mobile-robotics",
+    title: "Advanced Mobile Robotics: Estimation, SLAM, and Control",
+    blurb: "A sequence of robotics implementations spanning robot mobility, optimization, estimation, and control for swimming, land-roaming, and flying robots.",
+    tags: ["Robotics", "Python", "GTSAM", "Webots", "Control", "SLAM"],
+    area: "Robotics",
+    status: "Active",
+    thumb: "media/advanced-mobile-robotics/advanced-mobile-robotics_thumb.jpg",
+    previewVideo: "media/advanced-mobile-robotics/advanced-mobile-robotics_preview.mp4",
+    mainVideo: "media/advanced-mobile-robotics/advanced-mobile-robotics_preview.mp4",
+    links: { code: "" },
+    sections: [
+    { type: 'text', content: `This project tracks my work in Georgia Tech's Advanced Mobile Robotics course (ECE 8803 AMR). The course has 4 different projects called 'Swim', 'Walk', 'Drive', and 'Fly'. Each of them involves the use of the GTSAM Python library and Webots for immplementing things like control and filtering` },
+    { type: 'text', content: `First, we worked on 'Swim', which mostly focused on state estimation and control for an underwater ROV in the Webots simulator. I implemented an EKF using GTSAM's NavStateImuEKF package to fuse IMU data with position, depth, and range measurements for real-time localization.` },
+    { type: 'text', content: `We also had to build autonomous control functionality. I built a proportional controller that tracks desired trajectories. I broke it into four independent control channels: XY-plane distance error for forward thrust, depth error for vertical control, yaw error for heading, and roll error for stabilization. The key challenge was handling angle wrapping correctly—yaw and roll errors had to be mapped to [-π, π) to avoid discontinuities. I tuned the gains empirically until the robot tracked smoothly without too much oscillation.` },
+    { type: 'image', src: 'media/advanced-mobile-robotics/advanced-mobile-robotics_1.jpg', caption: 'Autonomous trajectory following and tracking error over time' },
+    { type: 'text', content: `This project gave me solid experience with nonlinear filtering on Lie groups (the state lives in SE(3)), sensor fusion with heterogeneous measurements, and control allocation for over-actuated systems. Working with GTSAM's factor graph library was particularly valuable for understanding how modern SLAM and estimation frameworks handle uncertainty.` }
+    ],
+    gallery: []
+  },
   {
     slug: "turtlebot3-ros2",
     title: "ROS2 Perception, Planning, and Control Experiments with TurtleBot3",
@@ -128,15 +131,15 @@ export const PROJECTS: Project[] = [
     mainVideo: "media/turtlebot3/turtlebot3_preview.mp4",
     links: { code: "https://github.com/ojas-mediratta/turtlebot3-ros2" },
     sections: [
-      { type: 'text', content: `This project was an ongoing exploration of perception, localization, and control using ROS2 on the TurtleBot3 platform. It taught me the fundamentals of the ROS 2 ecosystem in a practical, hands-on way as opposed to working exclusively in sim. ` },
-      { type: 'text', content: `I began with a simple perception pipeline that used OpenCV to detect and track colored objects (all written in Python). From there, I tied everything into ROS 2 topics so the robot could publish processed images and target coordinates in real time. Once that worked, I built a cascaded PID controller that fused camera and LIDAR inputs, which allowed the robot to chase moving targets while keeping a safe buffer of distance and maintaining alignment.` },
+      { type: 'text', content: `This project was an ongoing exploration of perception, localization, and control using ROS2 on the TurtleBot3 platform. It taught me the fundamentals of using ROS 2 and implementing nodes that run both in sim and on a physical robot.` },
+      { type: 'text', content: `I started by building a simple perception pipeline that used OpenCV to detect and track colored objects (all written in Python). From there, I ported everything to ROS 2 so the robot could publish processed images and target coordinates in real time. Once that worked, I moved onto writing a node that published twist commands based on the target coordinates (that used a proportional controller). Then, I built a PID controller that fused camera and LIDAR inputs, which allowed the robot to chase moving targets while keeping a safe buffer of distance and maintaining alignment.` },
       { type: 'videos', items: ['media/turtlebot3/turtlebot3_1.mp4', 'media/turtlebot3/turtlebot3_3.mp4'], caption: 'OpenCV tracking demo with port to ROS2' },
-      { type: 'text', content: `After that, I shifted toward navigation. I built a Go-to-Goal controller that blended odometry and LIDAR sensing for reactive obstacle avoidance. The robot computed velocity commands based on real-time obstacle vectors and could move toward arbitrary goal positions while steering cleanly around whatever got in the way. This part of the project taught me a lot about low-level control and sensor fusion.` },
+      { type: 'text', content: `After that, I worked on navigation. I built a Go-to-Goal controller that blended odometry and LIDAR sensing for reactive obstacle avoidance. The robot computed velocity commands based on real-time obstacle vectors and could move toward arbitrary goal positions while steering cleanly around whatever got in the way. You can see it working in the video below.` },
       { type: 'video', src: 'media/turtlebot3/turtlebot3_4.mp4', caption: 'Waypoint navigation with obstacle avoidance' },
-      { type: 'text', content: `The next phase focused on full mapping, localization, and global navigation with the ROS 2 Nav2 stack. I set up AMCL for reliable pose estimation, and tuned costmap and controller parameters until the robot could handle narrow hallways without drifting or oscillating. To automate longer missions, I wrote a ROS 2 node that publishes sequential waypoints to the /goal_pose topic so the robot can traverse a full route on its own. I tested everything in Gazebo's maze world and then transferred it to the physical TurtleBot3, where it performed well.` },
-      { type: 'text', content: `The final project brought everything together in a maze navigation task that required real-time sign classification using computer vision. The robot had to autonomously navigate through a maze while identifying and responding to visual commands posted at intersections. We experimented with several machine learning approaches for image classification, testing different models to balance accuracy with computational constraints. After evaluating options including deep learning architectures (just for fun, these were way too big to run on our limited turtlebot3 as we learned), we settled on a Support Vector Machine (SVM) classifier. The SVM proved to be lightweight enough to run directly onboard the TurtleBot3 while still delivering excellent classification performance. We ended up completing the course near perfectly, with the exception of one misclassification.` },
+      { type: 'text', content: `The next phase focused on full mapping, localization, and global navigation with the ROS 2 Nav2 stack. I set up AMCL for reliable pose estimation, and tuned costmap and controller parameters until the robot could handle narrow hallways without drifting or oscillating. To automate longer missions, I wrote a ROS 2 node that publishes sequential waypoints to the /goal_pose topic so the robot can traverse a full route on its own. I tested everything in Gazebo's maze world and then transferred it to the physical TurtleBot3, where it performed pretty well.` },
+      { type: 'text', content: `The final project brought everything together in a maze navigation task that required real-time sign classification using computer vision. The robot had to autonomously navigate through a maze while identifying and responding to visual commands posted at intersections. We experimented with several machine learning approaches for image classification, testing different models to balance accuracy with computational constraints. After evaluating options including deep learning architectures (just for fun, we found out these were way too big to run on our limited turtlebot3), we settled on a Support Vector Machine (SVM) classifier. The SVM proved to be lightweight enough to run directly onboard the TurtleBot3 while still delivering excellent classification performance. We ended up completing the course near perfectly, with the exception of one misclassification.` },
       { type: 'videos', items: ['media/turtlebot3/turtlebot3_5.mp4', 'media/turtlebot3/turtlebot3_preview.mp4'], caption: 'Localization and sign-based maze navigation demos' },
-      { type: 'text', content: `Overall, I'm quite satisfied with the skills I was able to develop working with ROS2 and robotics fundamentals like perception and navigation. View my code and the rest of my work in the linked GitHub repository.` },
+      { type: 'text', content: `Overall, I'm pretty satisfied with the skills I was able to develop working with ROS2 and implementing some baseline fundamentals for robotics. View my code and the rest of my work in the linked GitHub repository.` },
     ]
   },
   {
