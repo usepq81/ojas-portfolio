@@ -13,7 +13,7 @@ const withBase = (path?: string) =>
 
 // Helper function to parse markdown links in text
 const parseMarkdownLinks = (text: string) => {
-  const parts: (string | JSX.Element)[] = [];
+  const parts: (string | React.ReactElement)[] = [];
   let lastIndex = 0;
   
   // Match markdown links: [text](url)
