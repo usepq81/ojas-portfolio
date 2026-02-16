@@ -79,7 +79,11 @@ export const PROJECTS: Project[] = [
       { type: 'text', content: `I'm responsible for CAD and prototype fabrication of the gripper with sensor layout and fabrication for flexible arrays. I am also working on real to sim integration in NVIDIA IssacSim.` },
       { type: 'text', content: `The second gripper I am working on engineering tasks for is the Inspire hand from Inspire robotics. This hand has built-in tactile sensing, and I am working on real to sim in Issac Sim for this hand too.` }
     ],
-    gallery: []
+    gallery: [
+      "media/tactile-sensing/lipobattery-grip-trial.mp4",
+      "media/tactile-sensing/siliconecup-grip-trial2.mp4",
+      "media/tactile-sensing/smoothon-grip-trial3.mp4",
+    ]
   },
   // {
   //   slug: "slam-craft",
