@@ -75,14 +75,11 @@ export const PROJECTS: Project[] = [
     mainVideo: "",
     links: { code: "" },
     sections: [
-      { type: 'text', content: `I'm designing a modular gripper for a KUKA manipulator intended to accept custom flexible tactile sensors I am developing, inspired by [3D‑ViTac](https://binghao-huang.github.io/3D-ViTac/). This work is ongoing at the LIDAR Lab, Georgia Tech.` },
-      { type: 'text', content: `I'm responsible for CAD and prototype fabrication of the gripper with sensor layout and fabrication for flexible arrays. I am also working on real to sim integration in NVIDIA IssacSim.` },
-      { type: 'text', content: `The second gripper I am working on engineering tasks for is the Inspire hand from Inspire robotics. This hand has built-in tactile sensing, and I am working on real to sim in Issac Sim for this hand too.` }
+      { type: 'text', content: `I'm working on the design of a parallel gripper with linear actuation for the Unitree G1, intended to accept custom flexible tactile sensors I am developing, inspired by [3D‑ViTac](https://binghao-huang.github.io/3D-ViTac/). This work is ongoing at the LIDAR Lab, Georgia Tech.` },
+      { type: 'text', content: `The second gripper I am working on engineering tasks for is the Inspire hand from Inspire robotics. This hand has built-in tactile sensing, and I am working on real to sim in Issac Sim for this hand too. We're working on collecting tactile sensor data at the moment, and beyond characterizing the real pressure to analog value mapping, we've done some initial testing to see which gripper design works best for the collaborative tasks we're trying to optimize for. I wrote a python script that outputs the sensor readings to a GUI and logs pose as well as tactile sensor values to a csv.` },
+      { type: 'video', src: `media/tactile-sensing/lipobattery-grip-trial.mp4`, caption: 'Testing of the inspire hand.' },
     ],
     gallery: [
-      "media/tactile-sensing/lipobattery-grip-trial.mp4",
-      "media/tactile-sensing/siliconecup-grip-trial2.mp4",
-      "media/tactile-sensing/smoothon-grip-trial3.mp4",
     ]
   },
   // {
@@ -115,11 +112,12 @@ export const PROJECTS: Project[] = [
     mainVideo: "media/advanced-mobile-robotics/advanced-mobile-robotics_preview.mp4",
     links: { code: "" },
     sections: [
-    { type: 'text', content: `This project tracks my work in Georgia Tech's Advanced Mobile Robotics course (ECE 8803 AMR). The course has 4 different projects called 'Swim', 'Walk', 'Drive', and 'Fly'. Each of them involves the use of the GTSAM Python library and Webots for immplementing things like control and filtering` },
+    { type: 'text', content: `This project tracks my work in Georgia Tech's Advanced Mobile Robotics course (ECE 8803 AMR). The course has 4 different projects called 'Swim', 'Walk', 'Drive', and 'Fly'. Each of them involves the use of the GTSAM Python library and Webots for implementing things like control and filtering` },
     { type: 'text', content: `First, we worked on 'Swim', which mostly focused on state estimation and control for an underwater ROV in the Webots simulator. I implemented an EKF using GTSAM's NavStateImuEKF package to fuse IMU data with position, depth, and range measurements for real-time localization.` },
     { type: 'text', content: `We also had to build autonomous control functionality. I built a proportional controller that tracks desired trajectories. I broke it into four independent control channels: XY-plane distance error for forward thrust, depth error for vertical control, yaw error for heading, and roll error for stabilization. The key challenge was handling angle wrapping correctly—yaw and roll errors had to be mapped to [-π, π) to avoid discontinuities. I tuned the gains empirically until the robot tracked smoothly without too much oscillation.` },
     { type: 'image', src: 'media/advanced-mobile-robotics/advanced-mobile-robotics_1.jpg', caption: 'Autonomous trajectory following and tracking error over time' },
-    { type: 'text', content: `This project gave me solid experience with nonlinear filtering on Lie groups (the state lives in SE(3)), sensor fusion with heterogeneous measurements, and control allocation for over-actuated systems. Working with GTSAM's factor graph library was particularly valuable for understanding how modern SLAM and estimation frameworks handle uncertainty.` }
+    { type: 'text', content: `This project gave me solid experience with nonlinear filtering on Lie groups (the state lives in SE(3)) and sensor fusion with heterogeneous measurements. Working with GTSAM's factor graph library had a learning curve but was useful for understanding how to handle uncertainty with estimation.` },
+    { type: 'text', content: `We've just moved onto the 'Walk' project, which focuses on legged locomotion and control for Boston Dynamics' spot quadruped. There's been some introduction for forward and inverse kinematics as well as probablistic roadmaps.` }
     ],
     gallery: []
   },
