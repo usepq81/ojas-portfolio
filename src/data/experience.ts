@@ -21,8 +21,8 @@ export const EXPERIENCES: Experience[] = [
     org: "Laboratory for Intelligent Decision and Autonomous Robots (LIDAR) @ Georgia Tech",
     date: "Jan 2026 – Present",
     details: [
-      "Conducting research on tactile sensing for humanoid loco-manipulation and RL for collaborative transport and whole-body manipulation",
-      "Integrating tactile sensors in a compliant robotic arm, enabling enhanced manipulation capabilities, with plans for integration into a humanoid robot platform for collaborative tasks",
+      "Conducting research on tactile sensing for humanoid loco-manipulation and diffusion-based controllers for collaborative transport tasks.",
+      "Integrating tactile sensors in custom robotic gripper designs, enabling enhanced manipulation capabilities for humanoid robots.",
     ]
   },
   {
