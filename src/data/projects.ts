@@ -83,19 +83,19 @@ export const PROJECTS: Project[] = [
     ]
   },
   // {
-  //   slug: "slam-craft",
-  //   title: "SLAMCraft: Visual State Estimation from Minecraft Gameplay",
+  //   slug: "mine-track",
+  //   title: "MineTrack: Visual Odometry from Minecraft Gameplay",
   //   blurb: "Using Minecraft as a controlled simulation to study learning-based visual odometry, pose estimation, and SLAM from raw vision data.",
   //   tags: ["AI/ML", "Robotics", "Python", "Pytorch", "Computer Vision", "SLAM"],
   //   area: ["AI/ML", "Robotics"],
   //   status: "Active",
-  //   thumb: "media/slam-craft/slam-craft_thumb.jpg",
-  //   previewVideo: "",
+  //   thumb: "media/mine-track/mine-track_preview.gif",
+  //   previewVideo: "media/mine-track/mine-track_preview.gif",
   //   mainVideo: "",
   //   links: { code: "" },
   //   sections: [
   //     { type: 'text', content: `This project is currently in the planning stage.` },
-  //     { type: 'text', content: `SLAMCraft is a machine learning course project that combines unsupervised representation learning with supervised regression to study vision-based motion estimation. Minecraft gameplay data will be used as a synthetic dataset, pairing video frames with ground-truth pose information for training and evaluation.` },
+  //     { type: 'text', content: `MineTrack is a machine learning course project that combines unsupervised representation learning with supervised regression to study vision-based motion estimation. Minecraft gameplay data will be used as a synthetic dataset, pairing video frames with ground-truth pose information for training and evaluation.` },
   //     { type: 'text', content: `Further details, experiments, and results will be added as the project is implemented.` },
   //   ],
   //   gallery: []
